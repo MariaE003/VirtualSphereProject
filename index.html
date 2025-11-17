@@ -6,31 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="src/output.css" rel="stylesheet">
     <title>Document</title>
-    <style>
 
-        .container {
-            background-image: url('/images/plan-worker.jpg');
-
-            /* background-position-x:left ; */
-            /* width: 80%; */
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: contain;
-            height: 34rem;
-            margin-left: -1rem;
-            /* padding-top: 1rem; */
-            /* width: 100%; */
-            /* height: 53rem; */
-                /* height: 44rem; */
-        }
-    </style>
 </head>
 
 <body class="h-screen w-screen">
     <main class="flex h-full">
         <aside class="bg-[#A8BBA3] h-137.5  w-72 rounded-b-sm">
             <div class="flex justify-center items-center my-4">
-                <!-- <img src="" alt="none"> -->
                 <h1 class="mainTitle font-black font-bold text-[22px] lora-font">Virtual Sphere</h1>
             </div>
             <div class="slogAndBtnAdd flex flex-col items-center justify-evenly h-30">
@@ -39,14 +21,99 @@
             </div>
 
         </aside>
-        <section class="bg-contain bg-no-repeat bg-center flex-1"style=" background-image: url('/images/plan-worker.jpg');" >
-           
+        <section class="relative flex-1 overflow-hidden">
+            <img src="/images/plan-worker.jpg" class="w-full h-full absolute" alt="">
+            <div class="grid grid-cols-[1fr_15.6%_1fr_1fr] grid-rows-[1fr_1fr_1fr]  absolute">
+                <div
+                    class="  w-[24rem] h-46.5   border border-11 border-[#573131]  card flex justify-center items-start">
+                    <button class="px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
+                </div>
+                <div
+                    class="  h-[105%] col-start-3 col-end-4 border border-11 border-[#573131]  bg-[#f9bcbc4e]  card  flex justify-center items-start">
+                    <button class="px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
+
+                </div>
+                <div
+                    class=" h-[105%] col-start-4 col-end-5  border border-11 border-[#573131]  bg-[#f9bcbc4e]  card  flex justify-center items-start">
+                    <button class="px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
+
+                </div>
+
+                <div
+                    class="w-[24rem] h-[196%] border border-11 border-[#573131]  bg-[#f9bcbc4e]  card  flex justify-center items-start">
+                    <button class="px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
+
+                </div>
+                <div
+                    class=" h-[102%]   col-start-3 col-end-4 row-start-3 -mt-3 border border-11 border-[#573131]   card  flex justify-center items-start">
+                    <button class="px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
+
+                </div>
+                <div
+                    class=" h-[102%]  col-start-4 col-end-5 row-start-3 -mt-3 border border-11 border-[#573131]  bg-[#f9bcbc4e] card  flex justify-center items-start">
+                    <button class="px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
+
+                </div>
+            </div> 
         </section>
+
+
+        <!-- <section class="relative flex-1">
+    
+    <img src="/images/plan-worker.jpg" 
+         class="w-full h-full object-fill absolute inset-0" />
+
+    <div class="absolute inset-0 grid 
+                grid-cols-[1fr_15.6%_1fr_1fr] 
+                grid-rows-3 mx-4 gap-0">
+
+        <div
+            class="col-start-1 col-end-2 row-start-1 row-end-2
+                   border border-[#573131] bg-[#f9bcbc4e]
+                   flex justify-center items-start">
+            <button class="px-2 rounded bg-[#A8BBA3]">+</button>
+        </div>
+
+        <div
+            class="col-start-3 col-end-4 row-start-1 row-end-2
+                   border border-[#573131] bg-[#f9bcbc4e]
+                   flex justify-center items-start">
+            <button class="px-2 rounded bg-[#A8BBA3]">+</button>
+        </div>
+
+        <div
+            class="col-start-4 col-end-5 row-start-1 row-end-2
+                   border border-[#573131] bg-[#f9bcbc4e]
+                   flex justify-center items-start">
+            <button class="px-2 rounded bg-[#A8BBA3]">+</button>
+        </div>
+
+        <div
+            class="col-start-1 col-end-2 row-start-2 row-end-4
+                   border border-[#573131] bg-[#f9bcbc4e]
+                   flex justify-center items-start">
+            <button class="px-2 rounded bg-[#A8BBA3]">+</button>
+        </div>
+
+        <div
+            class="col-start-3 col-end-4 row-start-3 row-end-4
+                   border border-[#573131] bg-[#f9bcbc4e]
+                   flex justify-center items-start">
+            <button class="px-2 rounded bg-[#A8BBA3]">+</button>
+        </div>
+
+        <div
+            class="col-start-4 col-end-5 row-start-3 row-end-4
+                   border border-[#573131] bg-[#f9bcbc4e]
+                   flex justify-center items-start">
+            <button class="px-2 rounded bg-[#A8BBA3]">+</button>
+        </div>
+    </div>
+
+</section> -->
+
     </main>
 
 </body>
 
-</html> 
-
-
-
+</html>
