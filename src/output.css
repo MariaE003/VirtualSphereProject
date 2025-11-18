@@ -205,6 +205,9 @@
   .top-\[-\] {
     top: -;
   }
+  .top-\[2px\] {
+    top: 2px;
+  }
   .top-\[40\%\] {
     top: 40%;
   }
@@ -216,6 +219,9 @@
   }
   .left-\[25\%\] {
     left: 25%;
+  }
+  .left-\[26rem\] {
+    left: 26rem;
   }
   .left-\[27re\] {
     left: 27re;
@@ -325,6 +331,9 @@
   .h-46\.5 {
     height: calc(var(--spacing) * 46.5);
   }
+  .h-100 {
+    height: calc(var(--spacing) * 100);
+  }
   .h-137 {
     height: calc(var(--spacing) * 137);
   }
@@ -342,6 +351,12 @@
   }
   .h-\[90\%\] {
     height: 90%;
+  }
+  .h-\[100\%\] {
+    height: 100%;
+  }
+  .h-\[100\] {
+    height: 100;
   }
   .h-\[100px\] {
     height: 100px;
@@ -378,6 +393,9 @@
   }
   .w-72 {
     width: calc(var(--spacing) * 72);
+  }
+  .w-100 {
+    width: calc(var(--spacing) * 100);
   }
   .w-\[\%\] {
     width: %;
@@ -438,6 +456,9 @@
   }
   .w-\[22\.2rem\] {
     width: 22.2rem;
+  }
+  .w-\[24px\] {
+    width: 24px;
   }
   .w-\[24rem\] {
     width: 24rem;
@@ -508,6 +529,15 @@
   .flex-none {
     flex: none;
   }
+  .flex-shrink {
+    flex-shrink: 1;
+  }
+  .shrink {
+    flex-shrink: 1;
+  }
+  .shrink-0 {
+    flex-shrink: 0;
+  }
   .border-collapse {
     border-collapse: collapse;
   }
@@ -565,6 +595,9 @@
   .gap-y-3 {
     row-gap: calc(var(--spacing) * 3);
   }
+  .gap-y-4 {
+    row-gap: calc(var(--spacing) * 4);
+  }
   .gap-y-5 {
     row-gap: calc(var(--spacing) * 5);
   }
@@ -574,8 +607,17 @@
   .overflow-x-scroll {
     overflow-x: scroll;
   }
+  .overflow-y-auto {
+    overflow-y: auto;
+  }
+  .overflow-y-clip {
+    overflow-y: clip;
+  }
   .overflow-y-scroll {
     overflow-y: scroll;
+  }
+  .overflow-y-visible {
+    overflow-y: visible;
   }
   .rounded {
     border-radius: 0.25rem;
@@ -682,6 +724,9 @@
   .bg-\[\#6f6f6f\] {
     background-color: #6f6f6f;
   }
+  .bg-\[\#9c9999\] {
+    background-color: #9c9999;
+  }
   .bg-\[\#11310f\] {
     background-color: #11310f;
   }
@@ -711,6 +756,9 @@
   }
   .bg-\[\#f9bcbc4e\] {
     background-color: #f9bcbc4e;
+  }
+  .bg-\[\#fff\] {
+    background-color: #fff;
   }
   .bg-\[\#ffff\] {
     background-color: #ffff;
@@ -775,11 +823,17 @@
   .px-\[6px\] {
     padding-inline: 6px;
   }
+  .py-5 {
+    padding-block: calc(var(--spacing) * 5);
+  }
   .py-\[9px\] {
     padding-block: 9px;
   }
   .ps-2 {
     padding-inline-start: calc(var(--spacing) * 2);
+  }
+  .pt-5 {
+    padding-top: calc(var(--spacing) * 5);
   }
   .text-center {
     text-align: center;

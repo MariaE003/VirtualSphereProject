@@ -10,7 +10,7 @@
     <style>
         .formAddContainer {
             display: none;
-            justify-content: center; 
+            justify-content: center;
             align-items: center;
             position: fixed;
             /* top: 3%;
@@ -20,6 +20,27 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.698);
+        }
+
+        /* width de scroll (y) */
+        .formAdd::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        /* track => le brder raduis et bg du scrol qui en arrire */
+        .formAdd::-webkit-scrollbar-track {
+            background-color: #eee;
+            border-radius: 12px;
+        }
+
+        /* track => la partie qui je peut changer avec souris */
+        .formAdd::-webkit-scrollbar-thumb {
+            background-color: #777;
+            border-radius: 12px;
+        }
+
+        .formAdd::-webkit-scrollbar-thumb:hover {
+            background-color: #777;
         }
     </style>
 
@@ -75,26 +96,37 @@
 
     </main>
     <div class="formAddContainer">
-        <form action="" class="formAdd  w-[30rem] h-[90%]   bg-[#a2a4a3b8] flex flex-col text-white  gap-y-3 relative rounded-[5px]"  >
+        <form action=""
+            class="formAdd  w-[30rem] h-[90%]   bg-[#a2a4a3b8] flex flex-col text-white  gap-y-3 relative rounded-[5px] overflow-y-auto">
             <img src="images/remove-svgrepo-com.svg"
                 class="closeModal absolute w-[33px] left-[27rem] top-[-1px] cursor-pointer" alt="">
             <h2 class="text-center text-2xl font-sans">New worker</h2>
-            <div class="imgView w-36 h-36 bg-gray-200 rounded-[5rem] relative mx-auto border-2   border-dashed  border-gray-500">
-                <img src="" alt="none" class="imgViwUl" style="display: none;">
+            <div
+                class="DivimgView shrink-0  w-36 h-36 bg-gray-200 rounded-[5rem] relative mx-auto border-2   border-dashed  border-gray-500">
+                <img src="" alt="none" class="imgVeiw" style="display: none;">
                 <div class="placeholder absolute top-[40%] left-[25%] text-black">No image</div>
             </div>
             <div class="flex justify-evenly w-[100%]">
-                <input type="text" class="name w-[13rem]  ps-2 h-10 shadow rounded-[5px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)] " placeholder="youre name">
-                <input type="text" class="email w-[13rem]  ps-2 h-10 shadow rounded-[5px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]" placeholder="maria@gmail.com">
+                <input type="text"
+                    class="name w-[13rem]  ps-2 h-10 shadow rounded-[5px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)] "
+                    placeholder="youre name">
+                <input type="text"
+                    class="email w-[13rem]  ps-2 h-10 shadow rounded-[5px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]"
+                    placeholder="maria@gmail.com">
             </div>
 
             <div class="flex justify-evenly w-[100%]">
                 <div class="w-[13rem] flex justify-start">
-                    <span class="h-10 py-[9px] px-[6px]  w-[3rem] rounded-bl-2xl  bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]">+121</span>
-                    <input type="text" class="telephone   ps-2 h-10 shadow w-[10rem]  rounded-[5px] rounded-bl-[0px] rounded-tl-[0px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]" placeholder="0699230289">
+                    <span
+                        class="h-10 py-[9px] px-[6px]  w-[3rem] rounded-bl-2xl  bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]">+121</span>
+                    <input type="text"
+                        class="telephone   ps-2 h-10 shadow w-[10rem]  rounded-[5px] rounded-bl-[0px] rounded-tl-[0px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]"
+                        placeholder="0699230289">
                 </div>
 
-                <select class="role w-[13rem]  ps-2 h-10  rounded-[5px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]" id="">
+                <select
+                    class="role w-[13rem]  ps-2 h-10  rounded-[5px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]"
+                    id="">
                     <option value="Receptionnistes">Receptionnistes</option>
                     <option value="TechniciensIT" class="text-black">Techniciens IT</option>
                     <option value="AgentsDeSecurite" class="text-black">Agents De Securite</option>
@@ -105,13 +137,20 @@
             </div>
 
             <div class="flex justify-center">
-                <input type="url" class="urlImag w-1/2  ps-2 h-10  rounded-[5px]  bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]"
+                <input type="url"
+                    class="urlImag w-1/2  ps-2 h-10  rounded-[5px]  bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]"
                     placeholder="https://example.com/image.jpg">
             </div>
             <div class="flex justify-evenly items-center">
-                <h1 class="font-semibold">avez-vous des experiences ?</h1> <button
-                    class="bg-[#11310f] p-1 rounded-[5px] text-white cursor-pointer">Add Experience</button>
+                <h1 class="font-semibold">avez-vous des experiences ?</h1>
+                <button class="bg-[#11310f] p-1 rounded-[5px] text-white cursor-pointer AddExperienceBtn">Add
+                    Experience</button>
             </div>
+
+
+            <!-- <div class="bg-[#9c9999] relative flex flex-col gap-y-4">
+                <img src="images/trash-can-solid-full.svg" class=" absolute" style="color: #ff2e38;"/>
+                     </div> -->
         </form>
     </div>
 
