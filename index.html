@@ -5,7 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="src/output.css" rel="stylesheet">
-    <title>Document</title>
+    <title>Virtual Sphere</title>
+    <script src="Addworker.js" defer></script>
+    <style>
+        .formAddContainer {
+            display: none;
+            justify-content: center; 
+            align-items: center;
+            position: fixed;
+            /* top: 3%;
+            left: 32%; */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.698);
+        }
+    </style>
 
 </head>
 
@@ -17,7 +33,7 @@
             </div>
             <div class="slogAndBtnAdd flex flex-col items-center justify-evenly h-30">
                 <p class="slogans  font-light text-center">Smart space. Smart teams.</p>
-                <button class=" bg-[#d2d2d2] rounded-2xl p-1 cursor-pointer">+ Add Worker</button>
+                <button class="btnAddWorker bg-[#e5e5e56f] rounded-[5px] p-1 cursor-pointer">+ Add Worker</button>
             </div>
 
         </aside>
@@ -54,65 +70,56 @@
                     <button class="px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
 
                 </div>
-            </div> 
+            </div>
         </section>
 
+    </main>
+    <div class="formAddContainer">
+        <form action="" class="formAdd  w-[30rem] h-[90%]   bg-[#a2a4a3b8] flex flex-col text-white  gap-y-3 relative rounded-[5px]"  >
+            <img src="images/remove-svgrepo-com.svg"
+                class="closeModal absolute w-[33px] left-[27rem] top-[-1px] cursor-pointer" alt="">
+            <h2 class="text-center text-2xl font-sans">New worker</h2>
+            <div class="imgView w-36 h-36 bg-gray-200 rounded-[5rem] relative mx-auto border-2   border-dashed  border-gray-500">
+                <img src="" alt="none" class="imgViwUl" style="display: none;">
+                <div class="placeholder absolute top-[40%] left-[25%] text-black">No image</div>
+            </div>
+            <div class="flex justify-evenly w-[100%]">
+                <input type="text" class="name w-[13rem]  ps-2 h-10 shadow rounded-[5px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)] " placeholder="youre name">
+                <input type="text" class="email w-[13rem]  ps-2 h-10 shadow rounded-[5px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]" placeholder="maria@gmail.com">
+            </div>
 
-        <!-- <section class="relative flex-1">
-    
-    <img src="/images/plan-worker.jpg" 
-         class="w-full h-full object-fill absolute inset-0" />
+            <div class="flex justify-evenly w-[100%]">
+                <div class="w-[13rem] flex justify-start">
+                    <span class="h-10 py-[9px] px-[6px]  w-[3rem] rounded-bl-2xl  bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]">+121</span>
+                    <input type="text" class="telephone   ps-2 h-10 shadow w-[10rem]  rounded-[5px] rounded-bl-[0px] rounded-tl-[0px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]" placeholder="0699230289">
+                </div>
 
-    <div class="absolute inset-0 grid 
-                grid-cols-[1fr_15.6%_1fr_1fr] 
-                grid-rows-3 mx-4 gap-0">
+                <select class="role w-[13rem]  ps-2 h-10  rounded-[5px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]" id="">
+                    <option value="Receptionnistes">Receptionnistes</option>
+                    <option value="TechniciensIT" class="text-black">Techniciens IT</option>
+                    <option value="AgentsDeSecurite" class="text-black">Agents De Securite</option>
+                    <option value="Manager" class="text-black">Manager</option>
+                    <option value="Nettoyage " class="text-black">Nettoyage </option>
+                    <option value="Autresroles " class="text-black">Autres rôles </option>
+                </select>
+            </div>
 
-        <div
-            class="col-start-1 col-end-2 row-start-1 row-end-2
-                   border border-[#573131] bg-[#f9bcbc4e]
-                   flex justify-center items-start">
-            <button class="px-2 rounded bg-[#A8BBA3]">+</button>
-        </div>
-
-        <div
-            class="col-start-3 col-end-4 row-start-1 row-end-2
-                   border border-[#573131] bg-[#f9bcbc4e]
-                   flex justify-center items-start">
-            <button class="px-2 rounded bg-[#A8BBA3]">+</button>
-        </div>
-
-        <div
-            class="col-start-4 col-end-5 row-start-1 row-end-2
-                   border border-[#573131] bg-[#f9bcbc4e]
-                   flex justify-center items-start">
-            <button class="px-2 rounded bg-[#A8BBA3]">+</button>
-        </div>
-
-        <div
-            class="col-start-1 col-end-2 row-start-2 row-end-4
-                   border border-[#573131] bg-[#f9bcbc4e]
-                   flex justify-center items-start">
-            <button class="px-2 rounded bg-[#A8BBA3]">+</button>
-        </div>
-
-        <div
-            class="col-start-3 col-end-4 row-start-3 row-end-4
-                   border border-[#573131] bg-[#f9bcbc4e]
-                   flex justify-center items-start">
-            <button class="px-2 rounded bg-[#A8BBA3]">+</button>
-        </div>
-
-        <div
-            class="col-start-4 col-end-5 row-start-3 row-end-4
-                   border border-[#573131] bg-[#f9bcbc4e]
-                   flex justify-center items-start">
-            <button class="px-2 rounded bg-[#A8BBA3]">+</button>
-        </div>
+            <div class="flex justify-center">
+                <input type="url" class="urlImag w-1/2  ps-2 h-10  rounded-[5px]  bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]"
+                    placeholder="https://example.com/image.jpg">
+            </div>
+            <div class="flex justify-evenly items-center">
+                <h1 class="font-semibold">avez-vous des experiences ?</h1> <button
+                    class="bg-[#11310f] p-1 rounded-[5px] text-white cursor-pointer">Add Experience</button>
+            </div>
+        </form>
     </div>
 
-</section> -->
 
-    </main>
+
+
+
+
 
 </body>
 
