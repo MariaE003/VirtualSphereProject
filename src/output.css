@@ -283,6 +283,9 @@
   .ml-5 {
     margin-left: calc(var(--spacing) * 5);
   }
+  .block {
+    display: block;
+  }
   .flex {
     display: flex;
   }
@@ -339,6 +342,9 @@
   }
   .h-137\.5 {
     height: calc(var(--spacing) * 137.5);
+  }
+  .h-\[8\.73rem\] {
+    height: 8.73rem;
   }
   .h-\[20\%\] {
     height: 20%;
@@ -423,6 +429,9 @@
   }
   .w-\[6\] {
     width: 6;
+  }
+  .w-\[9rem\] {
+    width: 9rem;
   }
   .w-\[10\%\] {
     width: 10%;
@@ -642,6 +651,9 @@
   }
   .rounded-\[5rem\] {
     border-radius: 5rem;
+  }
+  .rounded-\[123rem\] {
+    border-radius: 123rem;
   }
   .rounded-tl-2xl {
     border-top-left-radius: var(--radius-2xl);

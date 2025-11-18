@@ -5,8 +5,9 @@ let formAddContainer = document.querySelector('.formAddContainer');
 let AddExperienceBtn = document.querySelector('.AddExperienceBtn');
 
 //pour voir images
-
-
+let imgVeiw=document.querySelector('.imgVeiw')
+let urlImag=document.querySelector('.urlImag')
+let textNoImage=document.querySelector('.textNoImage')
 // console.log(btnDeleteExp);
 
 let idExperience = 0;
@@ -14,25 +15,27 @@ let idExperience = 0;
 
 
 
-
+//ouvrir fermer le modale d'jout
 btnAddWorker.addEventListener('click', () => {
     formAddContainer.style.cssText = "display:flex;";
 });
 closeModal.addEventListener("click", () => {
     formAddContainer.style.cssText = "display:none;"
 })
+
+//ajouter des experience
 AddExperienceBtn.addEventListener('click', () => {
     AddExperience();
 
 
 })
 
-
+//
 formAdd.addEventListener('submit', (e) => {
     e.preventDefault();
 })
 
-
+//supprimer une experience
 formAdd.addEventListener('click', (e) => {
     if (e.target.classList.contains('btnDeleteExp')) {
         let parent = e.target.closest('.experienceDiv');
@@ -42,6 +45,13 @@ formAdd.addEventListener('click', (e) => {
         }
     }
 
+})
+
+//voir limage de utilisateur
+urlImag.addEventListener('input',()=>{
+    imgVeiw.src=urlImag.value;
+    imgVeiw.style.display="block";
+    textNoImage.innerText='';
 })
 
 
