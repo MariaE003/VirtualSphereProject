@@ -73,7 +73,6 @@
                 <div
                     class=" h-[105%] col-start-4 col-end-5  border border-11 border-[#573131]  bg-[#f9bcbc4e]  card  flex justify-center items-start">
                     <button class="px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
-
                 </div>
 
                 <div
@@ -115,24 +114,15 @@
                     placeholder="maria@gmail.com">
             </div>
 
-            <div class="flex justify-evenly w-[100%]">
-                <div class="w-[13rem] flex justify-start">
-                    <span
-                        class="h-10 py-[9px] px-[6px]  w-[3rem] rounded-bl-2xl  bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]">+121</span>
-                    <input type="text"
-                        class="telephone   ps-2 h-10 shadow w-[10rem]  rounded-[5px] rounded-bl-[0px] rounded-tl-[0px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]"
-                        placeholder="0699230289">
-                </div>
+            <div class="flex justify-evenly w-[100%] select">
+                <input type="text"
+                    class="telephone w-[13rem] flex justify-start  ps-2 h-10 shadow w-[10rem]  rounded-[5px] rounded-bl-[0px] rounded-tl-[0px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]"
+                    placeholder="0699230289">
 
                 <select
                     class="role w-[13rem]  ps-2 h-10  rounded-[5px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]"
                     id="">
-                    <option value="Receptionnistes">Receptionnistes</option>
-                    <option value="TechniciensIT" class="text-black">Techniciens IT</option>
-                    <option value="AgentsDeSecurite" class="text-black">Agents De Securite</option>
-                    <option value="Manager" class="text-black">Manager</option>
-                    <option value="Nettoyage " class="text-black">Nettoyage </option>
-                    <option value="Autresroles " class="text-black">Autres rôles </option>
+                    <option value="">choisir un role</option>
                 </select>
             </div>
 
@@ -143,14 +133,15 @@
             </div>
             <div class="flex justify-evenly items-center">
                 <h1 class="font-semibold">avez-vous des experiences ?</h1>
-                <button class="bg-[#11310f] p-1 rounded-[5px] text-white cursor-pointer AddExperienceBtn">Add
-                    Experience</button>
+                <button type="button" class="bg-[#505050] p-1 rounded-[5px] text-white cursor-pointer AddExperienceBtn">Add Experience</button>
             </div>
+            <div class="experience">
+
+            </div>
+            <button type="submit"
+                class="btnSubmit bg-[#505050] p-1 rounded-[5px] text-white cursor-pointer w-57 flex justify-center items-center mx-auto my-2 ">Send</button>
 
 
-            <!-- <div class="bg-[#9c9999] relative flex flex-col gap-y-4">
-                <img src="images/trash-can-solid-full.svg" class=" absolute" style="color: #ff2e38;"/>
-                     </div> -->
         </form>
     </div>
 
