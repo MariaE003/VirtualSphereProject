@@ -199,5 +199,23 @@ function validerForm(inputsExperience) {
     })
 }
 
+fetcherRoles()
+function fetcherRoles(){
+    fetch('./role.json').then(resp=>resp.json()).then(data=>{
+        data.roles.forEach(ele=>{
+            
+            let option=document.createElement('option');
+            option.classList.add('text-black');
+            option.value=`${ele}`;
+            option.textContent=`${ele}`;
+            selectRole.appendChild(option);            
+        })
+    })
+}
+
+
+function AddWorker(){
+
+}
 
 
