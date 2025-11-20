@@ -283,5 +283,28 @@ function addToLocalStorage() {
     localStorage.setItem('worker', JSON.stringify(worker));
 }
 
+AfficherWorker(worker);
+function AfficherWorker(worker) {
+    listWorkersUnsigned.innerHTML ='';
+    worker.forEach(ele=>{
+        
+        if (ele.statusWorker==="unsigned") {
+            let divWorkerUnsigned=document.createElement('div');
+            divWorkerUnsigned.classList.add("worker" ,"flex", "justify-evenly", "items-center", "bg-[#655e5e6f]" ,"w-[15rem]" ,"h-[4rem]" ,"rounded-[5px]");
+            divWorkerUnsigned.setAttribute('data-id',`${ele.id}`);
+            divWorkerUnsigned.innerHTML=`
+                    <img src="${ele.image}"
+                        class="w-13 rounded-4xl h-13" alt="none">
+                    <div>
+                        <h1>${ele.name}</h1>
+                        <h3>${ele.role}</h3>
+                    </div>
+                    <img src="images/delete-1-svgrepo-com (1).svg" class="btnDeleteWorker w-6 rounded-4xl h-6 cursor-pointer" alt="">
+            `
+            listWorkersUnsigned.appendChild(divWorkerUnsigned);
+        }
+
+    })
+}
 // localStorage.clear();
 
