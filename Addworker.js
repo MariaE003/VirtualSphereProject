@@ -278,5 +278,10 @@ function getIdWorker() {
         return Math.max(worker.map(ele=>ele.id))+1;
     }
 }
+
+function addToLocalStorage() {
+    localStorage.setItem('worker', JSON.stringify(worker));
+}
+
 // localStorage.clear();
 
