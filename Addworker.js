@@ -306,5 +306,28 @@ function AfficherWorker(worker) {
 
     })
 }
+deleteWorker()
+function deleteWorker() {
+    listWorkersUnsigned.addEventListener('click',(e)=>{
+        if (e.target.classList.contains('btnDeleteWorker')) {
+            let parent=e.target.closest('.worker');
+            let confirmeDelete=confirm('vous voulez vraiment supprimer ce worker !?');
+
+             if (confirmeDelete&&parent) {
+                console.log(parent);
+                
+                parent.remove();
+                let idR=parent.getAttribute("data-id");
+                console.log(idR);
+                
+                worker=worker.filter(ele=>ele.id != idR);
+                console.log (worker)
+                addToLocalStorage(worker);
+             }
+        }
+        
+    })
+    
+}
 // localStorage.clear();
 
