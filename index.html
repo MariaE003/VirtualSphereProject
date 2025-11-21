@@ -42,13 +42,68 @@
         .formAdd::-webkit-scrollbar-thumb:hover {
             background-color: #777;
         }
+
+        .availableworkersbg {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            /* top: 3%;
+            left: 32%; */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0 0 0 / 18%);
+
+        }
+
+        .availableworkersList::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .availableworkersList::-webkit-scrollbar-track {
+            background-color: #eee;
+            border-radius: 12px;
+        }
+
+        /* track => la partie qui je peut changer avec souris */
+        .availableworkersList::-webkit-scrollbar-thumb {
+            background-color: #777;
+            border-radius: 12px;
+        }
+
+        .availableworkersList::-webkit-scrollbar-thumb:hover {
+            background-color: #777;
+        }
+
+
+        /* pour sidebar */
+        .workernoUnsignedSide::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .workernoUnsignedSide::-webkit-scrollbar-track {
+            background-color: #eee;
+            border-radius: 12px;
+        }
+
+        /* track => la partie qui je peut changer avec souris */
+        .workernoUnsignedSide::-webkit-scrollbar-thumb {
+            background-color: #777;
+            border-radius: 12px;
+        }
+
+        .workernoUnsignedSide::-webkit-scrollbar-thumb:hover {
+            background-color: #777;
+        }
     </style>
 
 </head>
 
 <body class="h-screen w-screen">
     <main class="flex h-full">
-        <aside class="workernoUnsignedSide bg-[#A8BBA3] h-137.5  w-72 rounded-b-sm flex flex-col items-center">
+        <aside class="workernoUnsignedSide bg-[#A8BBA3] h-137.5  w-72 rounded-b-sm flex flex-col items-center gap-2 overflow-y-auto pb-7">
             <div class="flex justify-center items-center my-4">
                 <h1 class="mainTitle font-black font-bold text-[22px] lora-font">Virtual Sphere</h1>
             </div>
@@ -56,47 +111,53 @@
                 <p class="slogans  font-light text-center">Smart space. Smart teams.</p>
                 <button class="btnAddWorker bg-[#655e5e6f] rounded-[5px] p-1 cursor-pointer">+ Add Worker</button>
             </div>
-            <div class="listWorkers flex flex-col gap-y-1">
+            <div class="listWorkers flex flex-col gap-y-4 ">
 
             </div>
-
-
         </aside>
         <section class="relative flex-1 overflow-hidden">
             <img src="/images/plan-worker.jpg" class="w-full h-full absolute" alt="">
-            <div class="grid grid-cols-[1fr_15.6%_1fr_1fr] grid-rows-[1fr_1fr_1fr]  absolute">
-                <div
-                    class="  w-[24rem] h-46.5   border border-11 border-[#573131]  card flex justify-center items-start">
-                    <button class="px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
+            <div class="divMain grid grid-cols-[1fr_15.6%_1fr_1fr] grid-rows-[1fr_1fr_1fr]  absolute">
+                <div class="box1  conferenceRoom  w-[24rem] h-46.5   border border-11 border-[#573131]  card flex justify-center items-start"
+                    data-zone="Reception">
+                    <button
+                        class="btnAddToRooms BtnAddconferenceRom  px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
+                    <div class="divConferenceRoom">
+
+                    </div>
                 </div>
-                <div
-                    class="  h-[105%] col-start-3 col-end-4 border border-11 border-[#573131]  bg-[#f9bcbc4e]  card  flex justify-center items-start">
-                    <button class="px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
+                <div class=" box2 h-[105%] col-start-3 col-end-4 border border-11 border-[#573131]  bg-[#f9bcbc4e]  card  flex justify-center items-start"
+                    data-zone="Salle des serveurs">
+                    <button
+                        class="btnAddToRooms BtnAddServerRom px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
 
                 </div>
-                <div
-                    class=" h-[105%] col-start-4 col-end-5  border border-11 border-[#573131]  bg-[#f9bcbc4e]  card  flex justify-center items-start">
-                    <button class="px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
+                <div class=" box3 h-[105%] col-start-4 col-end-5  border border-11 border-[#573131]  bg-[#f9bcbc4e]  card  flex justify-center items-start"
+                    data-zone="Salle de securite">
+                    <button
+                        class="btnAddToRooms BtnAddSecuriteeRom px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
                 </div>
 
-                <div
-                    class="w-[24rem] h-[196%] border border-11 border-[#573131]  bg-[#f9bcbc4e]  card  flex justify-center items-start">
-                    <button class="px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
+                <div class=" box4 w-[24rem] h-[196%] border border-11 border-[#573131]  bg-[#f9bcbc4e]  card  flex justify-center items-start"
+                    data-zone="Salle d'archives">
+                    <button
+                        class="btnAddToRooms BtnAddreseptionRom px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
 
                 </div>
-                <div
-                    class=" h-[102%]   col-start-3 col-end-4 row-start-3 -mt-3 border border-11 border-[#573131]   card  flex justify-center items-start">
-                    <button class="px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
+                <div class=" box5 h-[102%]   col-start-3 col-end-4 row-start-3 -mt-3 border border-11 border-[#573131]   card  flex justify-center items-start"
+                    data-zone="Nettoyage">
+                    <button
+                        class="btnAddToRooms BtnAddPersonelRom px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
 
                 </div>
-                <div
-                    class=" h-[102%]  col-start-4 col-end-5 row-start-3 -mt-3 border border-11 border-[#573131]  bg-[#f9bcbc4e] card  flex justify-center items-start">
-                    <button class="px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
+                <div class="box6 h-[102%]  col-start-4 col-end-5 row-start-3 -mt-3 border border-11 border-[#573131]  bg-[#f9bcbc4e] card  flex justify-center items-start"
+                    data-zone="Autre">
+                    <button
+                        class="btnAddToRooms BtnAddArchiveRom px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
 
                 </div>
             </div>
         </section>
-
     </main>
     <div class="formAddContainer">
         <form action=""
@@ -113,13 +174,13 @@
                 <input type="text"
                     class="name w-[13rem]  ps-2 h-10 shadow rounded-[5px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)] "
                     placeholder="youre name">
-                <input type="text"
+                <input type="email"
                     class="email w-[13rem]  ps-2 h-10 shadow rounded-[5px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]"
                     placeholder="maria@gmail.com">
             </div>
 
             <div class="flex justify-evenly w-[100%] select">
-                <input type="text"
+                <input type="number"
                     class="telephone w-[13rem] flex justify-start  ps-2 h-10 shadow w-[10rem]  rounded-[5px] rounded-bl-[0px] rounded-tl-[0px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]"
                     placeholder="0699230289">
 
@@ -150,9 +211,79 @@
 
         </form>
     </div>
+    <!-- le modal detail worker -->
+    <section
+        class="modalDetailWorker bg-[#aaaaaa6d] w-120 h-150 flex flex-col justify-evenly items- mt-30 ms-10 p-3 rounded-[10px]">
+        <header class="flex justify-evenly items-center">
+            <div>
+                <img class="imgWorker w-30 rounded-[50%] border"
+                    src="https://i.pinimg.com/1200x/1c/85/2e/1c852ea928150dfcf54c5457dbca0a35.jpg"
+                    alt="image de cette worker non trouver">
+            </div>
+            <div class="">
+                <h2 class="text-2xl lora-font">Maria ELgotby</h2>
+                <h4 class="Inter">My Role is IT</h4>
+            </div>
+        </header>
+        <section class="contact flex justify-evenly">
+            <h5>maria@gmail.com</h5>
+            <h6>0699348877</h6>
+            <h6>localisation actuelle</h6>
+        </section>
+        <hr class="w-[50%]  text-[#939393] text-center">
+        <!-- <div class="flex justify-evenly">
+        </div> -->
+        <div class="Exp flex flex-col justify-evenly gap-y-3 ">
+            <h2 class="text-center">expériences : </h2>
+            <div class="flex justify-evenly ">
+                <h5>jobTitle : jnhkjhcjjdyf</h5>
+                <h5>companyName : vhgjljkb</h5>
+            </div>
+            <div class="dateFromTo flex justify-evenly -ms-[2.6rem]">
+                <h5>from : 12/06/2003</h5>
+                <h5>To : 20/11/2025 </h5>
+            </div>
+            <div class="flex flex-col gap-5">
+                <div class="text-center">
+                    <h5>Mission :</h5>
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero consequatur velit quae. Ullam
+                        voluptatem ducimus.
+                    </p>
+                </div>
+                <div class="text-center">
+                    <h5>Description :</h5>
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero consequatur velit quae. Ullam
+                        voluptatem ducimus.
+                    </p>
+                </div>
+            </div>
 
+        </div>
+    </section>
+    <!-- le modal available worker -->
+    <section class="availableworkersbg flex-col">
+        <section
+        class="availableworkersList  w-80 max-h-103 flex flex-col justify-center items-center bg-[#bbbbbbba] py-5 pt-47 gap-3 relative rounded-[5px] overflow-y-auto">
+        <!-- <h2 class="text-xl Inter">available worker</h2> -->
+            <!-- <img src="images/remove-svgrepo-com.svg"
+                class="closeModal absolute w-[33px] left-[17.3rem] top-[3px] cursor-pointer" alt="">
+            <h2 class="text-xl Inter">available worker</h2>
 
+            <div class="worker flex justify-evenly items-center bg-[#919090] w-[15rem] h-[4rem] rounded-[5px] cursor-pointer"
+                data-id="">
+                <img src="https://i.pinimg.com/1200x/1c/85/2e/1c852ea928150dfcf54c5457dbca0a35.jpg"
+                    class="w-13 rounded-4xl h-13" alt="none">
+                <div>
+                    <h1>Maria ELgotby</h1>
+                    <h3>My Role is IT</h3>
+                </div>
+                <img src="images/delete-1-svgrepo-com (1).svg" class="btnDeleteWorker w-6 rounded-4xl h-6 cursor-pointer" alt="">
+            </div> -->
 
+        </section>
+    </section>
 
 
 

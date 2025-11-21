@@ -1,13 +1,12 @@
 let btnAddWorker = document.querySelector('.btnAddWorker');
-let closeModal = document.querySelector('.closeModal');
+let closeModals = document.querySelectorAll('.closeModal');
 let formAdd = document.querySelector('.formAdd');
 let formAddContainer = document.querySelector('.formAddContainer');
 let AddExperienceBtn = document.querySelector('.AddExperienceBtn');
 let experienceDiv = document.querySelector('.experience')
 //side
-let workernoUnsignedSide=document.querySelector('.workernoUnsignedSide');
-let listWorkersUnsigned=document.querySelector('.listWorkers');
-
+let workernoUnsignedSide = document.querySelector('.workernoUnsignedSide');
+let listWorkersUnsigned = document.querySelector('.listWorkers');
 //les champs
 let inputName = document.querySelector('.name');
 let inputEmail = document.querySelector('.email');
@@ -27,6 +26,13 @@ let textNoImage = document.querySelector('.textNoImage')
 let AllInputs = Array.from(document.querySelectorAll('input,textarea,select'));
 // console.log(AllInputs);
 
+// div qui contient la partie grid +
+let divMain = Array.from(document.querySelectorAll('.divMain > div'));
+// console.log(divMain);
+
+//modal desn worker disponible et worker 
+let availableworkersbg = document.querySelector('.availableworkersbg')
+let availableworkersList = document.querySelector('.availableworkersList')
 
 let idExperience = 0;
 
@@ -34,16 +40,34 @@ let idExperience = 0;
 let worker = JSON.parse(localStorage.getItem('worker')) || [];
 //tableau des experiences disponible
 
+//
+
 
 //ouvrir fermer le modale d'jout
 btnAddWorker.addEventListener('click', () => {
     formAddContainer.style.cssText = "display:flex;";
 });
-closeModal.addEventListener("click", () => {
-    formAddContainer.style.cssText = "display:none;"
-})
 
-let inputsExperience;
+// let 
+// closeModals.forEach(btn => {
+// btn.addEventListener("click", () => {
+//     formAddContainer.style.cssText = "display:none;"
+//     if (e.target.closest('.closeModal')) {
+//     availableworkersbg.style.cssText="display:none;";
+//     }
+// })
+// })
+
+
+//fermer les button close
+document.addEventListener("click", (e) => {
+    if (e.target.closest('.closeModal')) {
+        formAddContainer.style.display = "none";
+        availableworkersbg.style.display = "none";
+    }
+});
+
+let inputsExperience = [];
 
 //ajouter des experience
 AddExperienceBtn.addEventListener('click', () => {
@@ -53,8 +77,6 @@ AddExperienceBtn.addEventListener('click', () => {
     // validerForm(inputsExperience);
     // console.log(inputsExperience);
 })
-
-
 
 
 
@@ -77,22 +99,65 @@ formAdd.addEventListener('click', (e) => {
 
 })
 
-//voir limage de utilisateur
+//voir l'image de utilisateur
 urlImag.addEventListener('input', () => {
     imgVeiw.src = urlImag.value;
     imgVeiw.style.display = "block";
     textNoImage.innerText = '';
-})
+});
+
+//l'evenement sur les button +
+// console.log(divMain);
+
+let btnAddToRooms = document.querySelectorAll(".btnAddToRooms");
+btnAddToRooms.forEach(btn => {
+    btn.addEventListener('click', () => {
+        let usWorker = worker.filter(ele => ele.statusWorker === 'unsigned');
+        if (btn.classList.contains('BtnAddconferenceRom')) {
+            filterSelonRole(usWorker, "salle de conference", 1);
+        }
+        if (btn.classList.contains('BtnAddServerRom')) {
+            filterSelonRole(usWorker, "salle server", 2)
+        } if (btn.classList.contains('BtnAddSecuriteeRom')) {
+            filterSelonRole(usWorker, "salle de securite", 3)
+        } if (btn.classList.contains('BtnAddreseptionRom')) {
+            filterSelonRole(usWorker, "sallereseption", 4)
+        } if (btn.classList.contains('BtnAddPersonelRom')) {
+            filterSelonRole(usWorker, "salle de personel", 5)
+        } if (btn.classList.contains('BtnAddArchiveRom')) {
+            filterSelonRole(usWorker, "salle de archive", 6);
+        }
+    })
+});
+
+
+
+
+
+
+// divMain.addEventListener('click',(e)=>{
+//     if (e.target.classList.contains('btnAddToRooms')){
+//         unsignedWorkerListePlus()
+//         availableworkersbg.style.display="flex";
+//     }
+
+// //    if (e.target.closest('.closeModal')) {
+// //     console.log("jjjjjj");
+
+// //     availableworkersbg.style.display = "none";
+// // }
+// })
 
 
 // ajouter des experience
 function AddExperience() {
 
+    idExperience++;
     let newDiv = document.createElement('div');
     //ajouter un class et style au div
     newDiv.setAttribute('class', 'relative bg-[#9c9999] flex flex-col gap-y-3 py-7 rounded-[5px] my-3')
     newDiv.classList.add('experienceDiv');
-    newDiv.setAttribute('data-id',idExperience);
+    newDiv.setAttribute('data-id', idExperience);
     // ajouter les champs d'experience 
     newDiv.innerHTML = `
                 <div class="divDeleteExp">
@@ -121,12 +186,11 @@ function AddExperience() {
                     <input type="text" placeholder="Missions"
                         class="inputsExperience Missions ps-2 h-10 rounded-[5px]  bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)] w-[13rem]  ">
                     <textarea placeholder="Description"
-                        class="inputsExperience Description ps-2 h-10 rounded-[5px]  bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)] w-[13rem]  "></textarea>
+                        class="inputsExperience Description ps-2 h-10 rounded-[5px]  bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)] w-[13rem] "></textarea>
                 </div>
     `
     experienceDiv.append(newDiv);
     // console.log(idExperience);
-    idExperience++;
 
 }
 
@@ -137,13 +201,13 @@ function validerForm(inputsExperience) {
     let regexPhone = /^(06|07)[0-9]{8}$/;
     let regexUrl = /^https:\/\/.+\.(jpg|png|gif)$/;
 
-    let isvalid=true;
+    let isvalid = true;
     // les input deja exist
     AllInputs.forEach(ele => {
         if (!ele.value.trim()) {
             ele.placeholder = "le champ est obligatoir"
             ele.style.border = "1px solid red";
-            isvalid=false;
+            isvalid = false;
         } else {
             ele.placeholder = ""
             ele.style.border = "none";
@@ -151,22 +215,22 @@ function validerForm(inputsExperience) {
                 inputName.style.border = "red solid 1px";
                 inputName.value = "";
                 inputName.placeholder = "le champ ne doit pas cotient des chiffre"
-                isvalid=false;
+                isvalid = false;
             } else if (!regexEmail.test(inputEmail.value)) {
                 inputEmail.style.border = "red solid 1px";
                 inputEmail.value = "";
                 inputEmail.placeholder = "email doit contient des @gmail.com"
-                isvalid=false;
+                isvalid = false;
             } else if (!regexPhone.test(inputTelephone.value)) {
                 inputTelephone.style.border = "red solid 1px";
                 inputTelephone.value = "";
                 inputTelephone.placeholder = "le numero de telephone doit cotient just 10 chifres "
-                isvalid=false;
+                isvalid = false;
             } else if (!regexUrl.test(inputUrlImag.value)) {
                 inputUrlImag.style.border = "red solid 1px";
                 inputUrlImag.value = "";
                 inputUrlImag.placeholder = "L'URL de l'image doit commencer par https:// et se terminer par .jpg"
-                isvalid=false;
+                isvalid = false;
             } else {
                 ele.placeholder = ""
                 ele.style.border = "none";
@@ -183,27 +247,27 @@ function validerForm(inputsExperience) {
         if (!ele.value.trim()) {
             ele.placeholder = "le champ est obligatoir"
             ele.style.border = "1px solid red";
-            isvalid=false;
+            isvalid = false;
         } else {
             ele.placeholder = ""
             ele.style.border = "none";
             // isvalid=true;
         }
-        // last inchalah
+
+        // tous les date de debut et dates fin 
         let DatesDebut = document.querySelectorAll('input.dateDebut');
         // console.log(DatesDebut.length);
-
         let DatesFin = document.querySelectorAll('input.dateFin');
         let spanErrorDate = document.querySelectorAll('span.errorDate');
         // console.log(spanErrorDate);
         DatesDebut.forEach((dateDebut, i) => {
             let dateFin = DatesFin[i]
-            let spanerror = spanErrorDate[i]
+            let spanerror = spanErrorDate[i];
             if (dateDebut.value && dateFin.value) {
                 if (dateDebut.value > dateFin.value) {
                     spanerror.style.cssText = "color:red;text-align:center;"
                     spanerror.innerText = "la date debut doit etre inferieur que la date de fin";
-                    isvalid=false;
+                    isvalid = false;
                 } else {
                     spanerror.style.display = "none";
                     // isvalid=true;
@@ -211,8 +275,8 @@ function validerForm(inputsExperience) {
             }
         })
     })
-    
-    if(isvalid){
+
+    if (isvalid) {
         AddWorker();
         formAdd.reset();
         formAddContainer.style.cssText = "display:none;"
@@ -259,23 +323,25 @@ function AddWorker() {
     })
     // console.log(experianceTable);
     const workerObject = {
-        id:getIdWorker(),
+        id: getIdWorker(),
         name: inputName.value, email: inputEmail.value, phone: inputTelephone.value, image: inputUrlImag.value, role: selectRole.value,
+        // room :'',
         experience: experianceTable,
         statusWorker: 'unsigned'
     }
+
     worker.push(workerObject);
     // console.log(worker);
 
-    addToLocalStorage(worker)
-    AfficherWorker(worker)
+    addToLocalStorage()
+    AfficherWorker(worker);
 
 }
 function getIdWorker() {
-    if(worker.length===0){
+    if (worker.length === 0) {
         return 1;
-    }else{
-        return Math.max(worker.map(ele=>ele.id))+1;
+    } else {
+        return Math.max(...worker.map(ele => ele.id)) + 1;
     }
 }
 
@@ -285,14 +351,15 @@ function addToLocalStorage() {
 
 AfficherWorker(worker);
 function AfficherWorker(worker) {
-    listWorkersUnsigned.innerHTML ='';
-    worker.forEach(ele=>{
-        
-        if (ele.statusWorker==="unsigned") {
-            let divWorkerUnsigned=document.createElement('div');
-            divWorkerUnsigned.classList.add("worker" ,"flex", "justify-evenly", "items-center", "bg-[#655e5e6f]" ,"w-[15rem]" ,"h-[4rem]" ,"rounded-[5px]");
-            divWorkerUnsigned.setAttribute('data-id',`${ele.id}`);
-            divWorkerUnsigned.innerHTML=`
+    listWorkersUnsigned.innerHTML = '';
+    worker.forEach(ele => {
+
+        if (ele.statusWorker === "unsigned") {
+            let divWorkerUnsigned = document.createElement('div');
+            divWorkerUnsigned.classList.add("worker", "flex", "justify-evenly", "items-center", "bg-[#655e5e6f]", "w-[15rem]", "h-[4rem]", "rounded-[5px]");
+            divWorkerUnsigned.setAttribute('data-id', `${ele.id}`);
+            divWorkerUnsigned.setAttribute('data-role', `${ele.role}`);
+            divWorkerUnsigned.innerHTML = `
                     <img src="${ele.image}"
                         class="w-13 rounded-4xl h-13" alt="none">
                     <div>
@@ -308,26 +375,25 @@ function AfficherWorker(worker) {
 }
 deleteWorker()
 function deleteWorker() {
-    listWorkersUnsigned.addEventListener('click',(e)=>{
+    listWorkersUnsigned.addEventListener('click', (e) => {
         if (e.target.classList.contains('btnDeleteWorker')) {
-            let parent=e.target.closest('.worker');
-            let confirmeDelete=confirm('vous voulez vraiment supprimer ce worker !?');
+            let parent = e.target.closest('.worker');
+            let confirmeDelete = confirm('vous voulez vraiment supprimer ce worker !?');
 
-             if (confirmeDelete&&parent) {
+            if (confirmeDelete && parent) {
                 console.log(parent);
-                
+
                 parent.remove();
-                let idR=parent.getAttribute("data-id");
+                let idR = parent.getAttribute("data-id");
                 console.log(idR);
-                
-                worker=worker.filter(ele=>ele.id != idR);
-                console.log (worker)
+
+                worker = worker.filter(ele => ele.id != idR);
+                console.log(worker)
                 addToLocalStorage(worker);
-             }
+            }
         }
-        
+
     })
-    
+
 }
 // localStorage.clear();
-
