@@ -131,6 +131,114 @@ btnAddToRooms.forEach(btn => {
 });
 
 
+function filterSelonRole(usworker, salle, numberBox) {
+    availableworkersList.innerHTML = '';
+    let workerChoisi = [];
+    if (salle === "salle de conference") {
+        usworker.forEach(w => {
+            workerChoisi.push(w);
+        });
+    }
+    if (salle === "salle de personel") {
+        usworker.forEach(w => {
+            workerChoisi.push(w);
+        });
+    }
+    if (salle === "salle server") {
+        usworker.forEach(w => {
+            if (w.role === 'Nettoyage') {
+                workerChoisi.push(w);
+            }
+            if (w.role === 'Techniciens IT') {
+                workerChoisi.push(w);
+            }
+            if (w.role === 'Manager') {
+                workerChoisi.push(w);
+            }
+        })
+    }
+    if (salle === "salle de securite") {
+        usworker.forEach(w => {
+            if (w.role === 'Nettoyage') {
+                workerChoisi.push(w);
+            }
+            if (w.role === 'Agents De Securite') {
+                workerChoisi.push(w);
+            }
+            if (w.role === 'Manager') {
+                workerChoisi.push(w);
+            }
+        })
+    }
+
+    if (salle === "sallereseption") {
+        usworker.forEach(w => {
+            if (w.role === 'Nettoyage') {
+                workerChoisi.push(w);
+            }
+            if (w.role === 'Receptionnistes') {
+                workerChoisi.push(w);
+            }
+            if (w.role === 'Manager') {
+                workerChoisi.push(w);
+            }
+        })
+    }
+
+    if (salle === "salle de archive") {
+        usworker.forEach(w => {
+            if (w.role === 'Manager') {
+                workerChoisi.push(w);
+            }
+        })
+    }
+    if (workerChoisi.length !== 0) {
+        //titre
+        let h1=document.createElement('h2')
+        h1.setAttribute('class','text-xl Inter')
+        h1.innerHTML='available worker';
+        availableworkersList.appendChild(h1);
+
+        //le btn supprimer
+        let imgremove=document.createElement('img')
+        imgremove.src='images/remove-svgrepo-com.svg';
+        imgremove.setAttribute('class','closeModal absolute w-[33px] left-[17.3rem] top-[3px] cursor-pointer')
+        imgremove.innerHTML='available worker';
+        availableworkersList.appendChild(imgremove);
+
+
+        workerChoisi.forEach(ele => {
+            // console.log(ele.role);
+            let div =document.createElement('div');
+            div.innerHTML = `
+            <div class="workerToAdd flex justify-evenly items-center bg-[#919090] w-[15rem] h-[4rem] rounded-[5px] cursor-pointer"
+                data-id="${ele.id}" data-role="${ele.role}">
+                <img src="${ele.image}"
+                    class="w-13 rounded-4xl h-13" alt="none">
+                <div>
+                    <h1>${ele.name}</h1>
+                    <h3>${ele.role}</h3>
+                </div>
+                <img src="images/delete-1-svgrepo-com (1).svg" class="btnDeleteWorker w-6 rounded-4xl h-6 cursor-pointer" alt="">
+            </div>
+        `
+            availableworkersList.appendChild(div);
+            div.addEventListener('click',()=>{
+                console.log(div);
+                
+                // usworker.filter
+
+            })
+        });
+    }else{
+        let h1=document.createElement('h4');
+        h1.setAttribute('class','text-xl Inter')
+        h1.innerHTML='No workers';
+        availableworkersList.appendChild(h1);
+    }
+    availableworkersbg.style.display = "flex";
+}
+
 
 
 
