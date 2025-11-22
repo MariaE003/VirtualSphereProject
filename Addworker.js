@@ -319,11 +319,18 @@ let divMain=document.querySelector('.divMain');
         if (e.target.classList.contains('redirigerWorkerBtn')) {
            let divworker=e.target.closest('.workerinBox ');
         //    console.log(divworker.getAttribute('data-status'));
-           divworker.setAttribute('data-status','unsigned');
-           let idToRedirige=divworker.getAttribute('data-id')
-           console.log(idToRedirige);
+        let idToRedirige=divworker.getAttribute('data-id');
+        //    console.log(idToRedirige);
+        
+        worker=worker.map(ele=>{
+            if (Number(ele.id)===Number(idToRedirige)) {
+                    ele.statusWorker='unsigned';
+                }
+                return ele;
+            })
+            localStorage.setItem('worker', JSON.stringify(worker));
            
-           redirigeToUnsigned(idToRedirige)
+           redirigeToUnsigned(divworker,worker);
            
         }
         
@@ -331,7 +338,12 @@ let divMain=document.querySelector('.divMain');
     
 // });
 
-// function
+function redirigeToUnsigned(divworker,worker){
+    
+    divworker.remove();
+    listWorkersUnsigned.appendChild(divworker);
+    AfficherWorker(worker);
+}
 
 
 // divMain.addEventListener('click',(e)=>{
