@@ -64,6 +64,7 @@ document.addEventListener("click", (e) => {
     if (e.target.closest('.closeModal')) {
         formAddContainer.style.display = "none";
         availableworkersbg.style.display = "none";
+        modalDetailWorkerBg.style.display="none";
     }
 });
 
@@ -336,16 +337,77 @@ divMain.addEventListener('click', (e) => {
 })
 //evenet pour afichier le detail dun worker
 divMain.addEventListener('click', (e) => {
-    // console.log(e.target.closest('.workerinBox'));
-
-    // if (e.target.classList.contains('workerinBox')) {
     let div = e.target.closest('.workerinBox');
 let workerId = div.getAttribute('data-id');
 console.log(workerId);
 
-        // affichierDetails(workerId);
-    // }
+        affichierDetails(workerId);
+   
 })
+
+let modalDetailWorkerBg=document.querySelector('.modalDetailWorkerBg');
+// detail du qorker
+function affichierDetails(workerId){
+    modalDetailWorkerBg.innerHTML='';
+    let workerD=worker.find(w=>Number(w.id)===Number(workerId));
+    // console.log(workerD);
+    
+    let sectionModalDetailWorker=document.createElement('section');
+    sectionModalDetailWorker.setAttribute('class','modalDetailWorker bg-[#aaaaaae6] w-99 h-115 flex flex-col justify-evenly items- mt-10 ms-10 p-3 rounded-[10px] relative');
+    sectionModalDetailWorker.innerHTML=`
+        <img src="images/remove-svgrepo-com.svg" class="closeModal absolute w-[33px] left-[21.9rem] top-[10px] cursor-pointer" alt="">
+        <header class="flex justify-evenly items-center">
+            <div>
+                <img class="imgWorker w-30 h-30 rounded-[50%] border"
+                    src="${workerD.image}"  alt="not found">
+            </div>
+            <div class="">
+                <h2 class="text-2xl lora-font">${workerD.name}</h2>
+                <h4 class="Inter">${workerD.role}</h4>
+            </div>
+        </header>
+        <section class="contact flex justify-evenly">
+            <h5>${workerD.email}</h5>
+            <h6>${workerD.phone}</h6>
+            <h6>${workerD.statusWorker}</h6>
+        </section>
+        <hr class="w-[50%]  text-[#484848] text-center mx-auto">
+        <div class="Exp flex flex-col justify-evenly gap-y-3">
+            <h2 class="text-center">expériences : </h2>
+            
+            ${workerD.experience.map(exp=> `
+            <div class="flex justify-evenly ">
+                <h5>jobTitle : ${exp.jobTitle}</h5>
+                <h5>companyName : ${exp.CompanyName}</h5>
+            </div>
+            <div class="dateFromTo flex justify-evenly -ms-[2.6rem]">
+                <h5>from : ${exp.dateDebut}</h5>
+                <h5>To : ${exp.dateFin} </h5>
+            </div>
+            <div class="flex flex justify-evenly  gap-5">
+                <div class="text-center">
+                    <h5>Mission :</h5>
+                    <p>
+                        ${exp.Missions}
+                    </p>
+                </div>
+                <div class="text-center">
+                    <h5>Description :</h5>
+                    <p>
+                       ${exp.Description}
+                    </p>
+                </div>
+            </div>
+
+            `).join('')}
+        </div>`
+    
+        
+    modalDetailWorkerBg.appendChild(sectionModalDetailWorker);
+
+    modalDetailWorkerBg.style.display="flex";
+
+}
 
 function redirigeToUnsigned(divworker, worker) {
 

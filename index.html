@@ -48,14 +48,23 @@
             justify-content: center;
             align-items: center;
             position: fixed;
-            /* top: 3%;
-            left: 32%; */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-color: rgb(0 0 0 / 18%);
 
+        }
+        .modalDetailWorkerBg{
+             display: none;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0 0 0 / 18%);
         }
 
         .availableworkersList::-webkit-scrollbar {
@@ -235,55 +244,10 @@
         </form>
     </div>
     <!-- le modal detail worker -->
-    <section
-        class="modalDetailWorker bg-[#aaaaaa6d] w-120 h-150 flex flex-col justify-evenly items- mt-30 ms-10 p-3 rounded-[10px]">
-        <header class="flex justify-evenly items-center">
-            <div>
-                <img class="imgWorker w-30 rounded-[50%] border"
-                    src="https://i.pinimg.com/1200x/1c/85/2e/1c852ea928150dfcf54c5457dbca0a35.jpg"
-                    alt="image de cette worker non trouver">
-            </div>
-            <div class="">
-                <h2 class="text-2xl lora-font">Maria ELgotby</h2>
-                <h4 class="Inter">My Role is IT</h4>
-            </div>
-        </header>
-        <section class="contact flex justify-evenly">
-            <h5>maria@gmail.com</h5>
-            <h6>0699348877</h6>
-            <h6>localisation actuelle</h6>
-        </section>
-        <hr class="w-[50%]  text-[#939393] text-center">
-        <!-- <div class="flex justify-evenly">
-        </div> -->
-        <div class="Exp flex flex-col justify-evenly gap-y-3 ">
-            <h2 class="text-center">expériences : </h2>
-            <div class="flex justify-evenly ">
-                <h5>jobTitle : jnhkjhcjjdyf</h5>
-                <h5>companyName : vhgjljkb</h5>
-            </div>
-            <div class="dateFromTo flex justify-evenly -ms-[2.6rem]">
-                <h5>from : 12/06/2003</h5>
-                <h5>To : 20/11/2025 </h5>
-            </div>
-            <div class="flex flex-col gap-5">
-                <div class="text-center">
-                    <h5>Mission :</h5>
-                    <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero consequatur velit quae. Ullam
-                        voluptatem ducimus.
-                    </p>
-                </div>
-                <div class="text-center">
-                    <h5>Description :</h5>
-                    <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero consequatur velit quae. Ullam
-                        voluptatem ducimus.
-                    </p>
-                </div>
-            </div>
-
-        </div>
+     <section class="modalDetailWorkerBg">
+    <!-- <section class="modalDetailWorker bg-[#aaaaaae6] w-120 h-150 flex flex-col justify-evenly items- mt-30 ms-10 p-3 rounded-[10px] relative">
+        
+    </section> -->
     </section>
     <!-- le modal available worker -->
     <section class="availableworkersbg flex-col">

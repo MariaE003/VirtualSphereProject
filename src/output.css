@@ -196,20 +196,59 @@
   .top-\[3px\] {
     top: 3px;
   }
+  .top-\[7px\] {
+    top: 7px;
+  }
+  .top-\[10px\] {
+    top: 10px;
+  }
+  .top-\[21px\] {
+    top: 21px;
+  }
+  .top-\[23px\] {
+    top: 23px;
+  }
+  .top-\[26\.5rem\] {
+    top: 26.5rem;
+  }
+  .top-\[30px\] {
+    top: 30px;
+  }
   .top-\[40\%\] {
     top: 40%;
+  }
+  .top-\[49px\] {
+    top: 49px;
+  }
+  .top-\[px\] {
+    top: px;
   }
   .left-\[17\.3rem\] {
     left: 17.3rem;
   }
+  .left-\[20\.5rem\] {
+    left: 20.5rem;
+  }
+  .left-\[20rem\] {
+    left: 20rem;
+  }
+  .left-\[21\.9rem\] {
+    left: 21.9rem;
+  }
   .left-\[25\%\] {
     left: 25%;
+  }
+  .left-\[26\.5rem\] {
+    left: 26.5rem;
   }
   .left-\[26rem\] {
     left: 26rem;
   }
   .left-\[27rem\] {
     left: 27rem;
+  }
+  .left-\[62\.5rem\] {
+    left: 62.5rem;
   }
   .col-start-3 {
     grid-column-start: 3;
@@ -249,6 +288,9 @@
   }
   .-mt-3 {
     margin-top: calc(var(--spacing) * -3);
+  }
+  .mt-10 {
+    margin-top: calc(var(--spacing) * 10);
   }
   .mt-30 {
     margin-top: calc(var(--spacing) * 30);
@@ -309,6 +351,12 @@
   }
   .h-46\.5 {
     height: calc(var(--spacing) * 46.5);
+  }
+  .h-115 {
+    height: calc(var(--spacing) * 115);
+  }
+  .h-130 {
+    height: calc(var(--spacing) * 130);
   }
   .h-137 {
     height: calc(var(--spacing) * 137);
@@ -393,6 +441,12 @@
   }
   .w-80 {
     width: calc(var(--spacing) * 80);
+  }
+  .w-99 {
+    width: calc(var(--spacing) * 99);
+  }
+  .w-110 {
+    width: calc(var(--spacing) * 110);
   }
   .w-120 {
     width: calc(var(--spacing) * 120);
@@ -630,6 +684,9 @@
   .border-gray-500 {
     border-color: var(--color-gray-500);
   }
+  .bg-\[\#\#aaaaaae6\] {
+    background-color: ##aaaaaae6;
+  }
   .bg-\[\#4e474729\] {
     background-color: #4e474729;
   }
@@ -653,6 +710,9 @@
   }
   .bg-\[\#aaaaaa6d\] {
     background-color: #aaaaaa6d;
+  }
+  .bg-\[\#aaaaaae6\] {
+    background-color: #aaaaaae6;
   }
   .bg-\[\#bbbbbbba\] {
     background-color: #bbbbbbba;
@@ -734,6 +794,9 @@
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
+  }
+  .text-\[\#484848\] {
+    color: #484848;
   }
   .text-\[\#939393\] {
     color: #939393;
