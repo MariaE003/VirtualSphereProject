@@ -27,7 +27,7 @@ let AllInputs = Array.from(document.querySelectorAll('input,textarea,select'));
 // console.log(AllInputs);
 
 // div qui contient la partie grid +
-let divMain = Array.from(document.querySelectorAll('.divMain > div'));
+// let divMain = Array.from(document.querySelectorAll('.divMain > div'));
 // console.log(divMain);
 
 //modal desn worker disponible et worker 
@@ -194,22 +194,22 @@ function filterSelonRole(usworker, salle, numberBox) {
     }
     if (workerChoisi.length !== 0) {
         //titre
-        let h1=document.createElement('h2')
-        h1.setAttribute('class','text-xl Inter')
-        h1.innerHTML='available worker';
+        let h1 = document.createElement('h2')
+        h1.setAttribute('class', 'text-xl Inter')
+        h1.innerHTML = 'available worker';
         availableworkersList.appendChild(h1);
 
         //le btn supprimer
-        let imgremove=document.createElement('img')
-        imgremove.src='images/remove-svgrepo-com.svg';
-        imgremove.setAttribute('class','closeModal absolute w-[33px] left-[17.3rem] top-[3px] cursor-pointer')
-        imgremove.innerHTML='available worker';
+        let imgremove = document.createElement('img')
+        imgremove.src = 'images/remove-svgrepo-com.svg';
+        imgremove.setAttribute('class', 'closeModal absolute w-[33px] left-[17.3rem] top-[3px] cursor-pointer')
+        imgremove.innerHTML = 'available worker';
         availableworkersList.appendChild(imgremove);
 
 
         workerChoisi.forEach(ele => {
             // console.log(ele.role);
-            let div =document.createElement('div');
+            let div = document.createElement('div');
             div.innerHTML = `
             <div class="workerToAdd flex justify-evenly items-center bg-[#919090] w-[15rem] h-[4rem] rounded-[5px] cursor-pointer"
                 data-id="${ele.id}" data-role="${ele.role}" data-status="${ele.statusWorker}">
@@ -219,37 +219,112 @@ function filterSelonRole(usworker, salle, numberBox) {
                     <h1>${ele.name}</h1>
                     <h3>${ele.role}</h3>
                 </div>
-                <img src="images/delete-1-svgrepo-com (1).svg" class="btnDeleteWorker w-6 rounded-4xl h-6 cursor-pointer" alt="">
             </div>
         `
             availableworkersList.appendChild(div);
-            div.addEventListener('click',()=>{
+            div.addEventListener('click', () => {
                 // console.log(div);
-                
-                
-                const workerToMove=usworker.find(wor=>{
-                    if((wor.id===ele.id) ||(wor.role===ele.role)){
-                        // return wor;
-                        // div.remove();
-                        wor.statusWorker="conference Rom";
-                        console.log(div);
-                        
-                    
-                    }});
-                
+
+
+                const workerToMove = usworker.find(wor => {
+                    if ((wor.id === ele.id) || (wor.role === ele.role)) {
+                        let workerToRemoveFromSideBar = document.querySelector(`.listWorkers .worker[data-id="${ele.id}"]`);
+                        if (workerToRemoveFromSideBar) {
+                            workerToRemoveFromSideBar.remove();
+                        } else {
+                            console.log('element non trouve');
+                        }
+
+                        // wor.statusWorker="conference Rom";//attribute
+                        let usworker1 = usworker.find(w => w.id === ele.id);
+                        usworker1.statusWorker = `box${numberBox}`
+                        // console.log(usworker);
+                        usworker = usworker.filter(w => w.id === ele.id);
+                        // console.log(usworker);
+
+                        localStorage.setItem('worker', JSON.stringify(worker));
+                        // addToLocalStorage()
+                        // console.log(worker);
+                        affichierWorkerInBox(numberBox, usworker1);
+                        availableworkersbg.style.display = "none";
+
+
+                    }
+                });
+                console.log(workerToMove);
+
+
 
             })
         });
-    }else{
-        let h1=document.createElement('h4');
-        h1.setAttribute('class','text-xl Inter')
-        h1.innerHTML='No workers';
+    } else {
+        let h1 = document.createElement('h4');
+        h1.setAttribute('class', 'text-xl Inter')
+        h1.innerHTML = 'No workers';
         availableworkersList.appendChild(h1);
     }
     availableworkersbg.style.display = "flex";
 }
 
 
+function affichierWorkerInBox(numbox, worker) {
+
+
+    // console.log(worker);
+
+    let div = document.createElement('div');
+    let roleAb;
+    if (worker.role === 'Receptionnistes') {
+        roleAb = 'Recp'
+    } if (worker.role === 'Techniciens IT') {
+        roleAb = 'It'
+    } if (worker.role === 'Agents De Securite') {
+        roleAb = 'Ags'
+    } if (worker.role === 'Manager') {
+        roleAb = 'M'
+    } if (worker.role === 'Nettoyage') {
+        roleAb = 'Net'
+    }
+    if (worker.role === 'Autres rôles') {
+        roleAb = 'Ar'
+    }
+    if (worker.statusWorker != 'unsigned') {
+        
+        let box = document.querySelector(`.box${numbox} .DivworkerInRoom`);
+        if (box.querySelector(`.workerinBox[data-id="${worker.id}"]`)) return;
+        if (!worker) return;
+        // console.log(box);
+        let name = worker.name.slice(0, 6).trim()
+        div.innerHTML = `
+            <div class="workerinBox flex justify-evenly items-center bg-[#919090] w-[8rem] h-[3rem] text-[12px] rounded-[5px] cursor-pointer"
+                data-id="${worker.id}" data-role="${worker.role}" data-status="${worker.statusWorker}">
+                <img src="${worker.image}"
+                    class="w-9 rounded-4xl h-9" alt="none">
+                <div>
+                    <h1>${name}</h1>
+                    <h3>${roleAb}</h3>
+                </div>
+                <img src="images/delete-1-svgrepo-com (1).svg" class="redirigerWorker w-6 rounded-4xl h-6 cursor-pointer" alt="">
+
+            </div>
+        `
+        box.appendChild(div);
+    }
+}
+let divMain=document.querySelector('.divMain');
+// console.log(allIconDelete);
+// allIconDelete.forEach(ele => {
+    divMain.addEventListener('click',(e)=>{
+        if (e.target.classList.contains('redirigerWorker')) {
+            
+            console.log(e.target);
+        }
+        // if (e.target) {
+        // }
+        
+    })
+    
+// });
 
 
 
@@ -470,13 +545,14 @@ function addToLocalStorage() {
 AfficherWorker(worker);
 function AfficherWorker(worker) {
     listWorkersUnsigned.innerHTML = '';
+    // document.querySelector(".DivworkerInRoom").innerHTML = '';
     worker.forEach(ele => {
 
         if (ele.statusWorker === "unsigned") {
             let divWorkerUnsigned = document.createElement('div');
             divWorkerUnsigned.classList.add("worker", "flex", "justify-evenly", "items-center", "bg-[#655e5e6f]", "w-[15rem]", "h-[4rem]", "rounded-[5px]");
             divWorkerUnsigned.setAttribute('data-id', `${ele.id}`);
-            divWorkerUnsigned.setAttribute('data-role', `${ele.role}`);
+            // divWorkerUnsigned.setAttribute('data-role', `${ele.role}`);
             divWorkerUnsigned.innerHTML = `
                     <img src="${ele.image}"
                         class="w-13 rounded-4xl h-13" alt="none">
@@ -487,6 +563,12 @@ function AfficherWorker(worker) {
                     <img src="images/delete-1-svgrepo-com (1).svg" class="btnDeleteWorker w-6 rounded-4xl h-6 cursor-pointer" alt="">
             `
             listWorkersUnsigned.appendChild(divWorkerUnsigned);
+        }
+        if (ele.statusWorker != 'unsigned') {
+            let boxnum = ele.statusWorker.slice(3).trim();
+            // console.log(boxnum);
+            affichierWorkerInBox(boxnum, ele);
+
         }
 
     })
