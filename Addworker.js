@@ -289,7 +289,7 @@ function affichierWorkerInBox(numbox, worker) {
         roleAb = 'Ar'
     }
     if (worker.statusWorker != 'unsigned') {
-        
+
         let box = document.querySelector(`.box${numbox} .DivworkerInRoom`);
         if (box.querySelector(`.workerinBox[data-id="${worker.id}"]`)) return;
         if (!worker) return;
@@ -312,34 +312,43 @@ function affichierWorkerInBox(numbox, worker) {
     }
 }
 //event de rediriger un worker vers sidebar / 'unsigned' 
-let divMain=document.querySelector('.divMain');
-// console.log(allIconDelete);
-// allIconDelete.forEach(ele => {
-    divMain.addEventListener('click',(e)=>{
-        if (e.target.classList.contains('redirigerWorkerBtn')) {
-           let divworker=e.target.closest('.workerinBox ');
-        //    console.log(divworker.getAttribute('data-status'));
-        let idToRedirige=divworker.getAttribute('data-id');
-        //    console.log(idToRedirige);
-        
-        worker=worker.map(ele=>{
-            if (Number(ele.id)===Number(idToRedirige)) {
-                    ele.statusWorker='unsigned';
-                }
-                return ele;
-            })
-            localStorage.setItem('worker', JSON.stringify(worker));
-           
-           redirigeToUnsigned(divworker,worker);
-           
-        }
-        
-    })
-    
-// });
+let divMain = document.querySelector('.divMain');
 
-function redirigeToUnsigned(divworker,worker){
-    
+divMain.addEventListener('click', (e) => {
+    if (e.target.classList.contains('redirigerWorkerBtn')) {
+        let divworker = e.target.closest('.workerinBox ');
+        //    console.log(divworker.getAttribute('data-status'));
+        let idToRedirige = divworker.getAttribute('data-id');
+        //    console.log(idToRedirige);
+
+        worker = worker.map(ele => {
+            if (Number(ele.id) === Number(idToRedirige)) {
+                ele.statusWorker = 'unsigned';
+            }
+            return ele;
+        })
+        localStorage.setItem('worker', JSON.stringify(worker));
+
+        redirigeToUnsigned(divworker, worker);
+
+    }
+
+})
+//evenet pour afichier le detail dun worker
+divMain.addEventListener('click', (e) => {
+    // console.log(e.target.closest('.workerinBox'));
+
+    // if (e.target.classList.contains('workerinBox')) {
+    let div = e.target.closest('.workerinBox');
+let workerId = div.getAttribute('data-id');
+console.log(workerId);
+
+        // affichierDetails(workerId);
+    // }
+})
+
+function redirigeToUnsigned(divworker, worker) {
+
     divworker.remove();
     listWorkersUnsigned.appendChild(divworker);
     AfficherWorker(worker);
