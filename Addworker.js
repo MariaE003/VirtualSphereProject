@@ -304,28 +304,34 @@ function affichierWorkerInBox(numbox, worker) {
                     <h1>${name}</h1>
                     <h3>${roleAb}</h3>
                 </div>
-                <img src="images/delete-1-svgrepo-com (1).svg" class="redirigerWorker w-6 rounded-4xl h-6 cursor-pointer" alt="">
+                <img src="images/delete-1-svgrepo-com (1).svg" class="redirigerWorkerBtn w-6 rounded-4xl h-6 cursor-pointer" alt="">
 
             </div>
         `
         box.appendChild(div);
     }
 }
+//event de rediriger un worker vers sidebar / 'unsigned' 
 let divMain=document.querySelector('.divMain');
 // console.log(allIconDelete);
 // allIconDelete.forEach(ele => {
     divMain.addEventListener('click',(e)=>{
-        if (e.target.classList.contains('redirigerWorker')) {
-            
-            console.log(e.target);
+        if (e.target.classList.contains('redirigerWorkerBtn')) {
+           let divworker=e.target.closest('.workerinBox ');
+        //    console.log(divworker.getAttribute('data-status'));
+           divworker.setAttribute('data-status','unsigned');
+           let idToRedirige=divworker.getAttribute('data-id')
+           console.log(idToRedirige);
+           
+           redirigeToUnsigned(idToRedirige)
+           
         }
-        // if (e.target) {
-        // }
         
     })
     
 // });
 
+// function
 
 
 // divMain.addEventListener('click',(e)=>{
