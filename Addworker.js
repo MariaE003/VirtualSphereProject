@@ -26,9 +26,8 @@ let textNoImage = document.querySelector('.textNoImage')
 let AllInputs = Array.from(document.querySelectorAll('input,textarea,select'));
 // console.log(AllInputs);
 
-// div qui contient la partie grid +
-// let divMain = Array.from(document.querySelectorAll('.divMain > div'));
-// console.log(divMain);
+
+
 
 //modal desn worker disponible et worker 
 let availableworkersbg = document.querySelector('.availableworkersbg')
@@ -48,15 +47,8 @@ btnAddWorker.addEventListener('click', () => {
     formAddContainer.style.cssText = "display:flex;";
 });
 
-// let 
-// closeModals.forEach(btn => {
-// btn.addEventListener("click", () => {
-//     formAddContainer.style.cssText = "display:none;"
-//     if (e.target.closest('.closeModal')) {
-//     availableworkersbg.style.cssText="display:none;";
-//     }
-// })
-// })
+
+
 
 
 //fermer les button close
@@ -64,7 +56,7 @@ document.addEventListener("click", (e) => {
     if (e.target.closest('.closeModal')) {
         formAddContainer.style.display = "none";
         availableworkersbg.style.display = "none";
-        modalDetailWorkerBg.style.display="none";
+        modalDetailWorkerBg.style.display = "none";
     }
 });
 
@@ -222,10 +214,89 @@ function filterSelonRole(usworker, salle, numberBox) {
                 </div>
             </div>
         `
-            availableworkersList.appendChild(div);
-            div.addEventListener('click', () => {
-                // console.log(div);
 
+            availableworkersList.appendChild(div);
+
+            // // 
+            // let targetBox = document.querySelector(`.box${numberBox} .DivworkerInRoom`);
+            // let currentCount = targetBox.querySelectorAll('.workerinBox').length;
+
+            // if (!targetBox) {
+            //     console.log('box introuvable');
+            //     return;
+            // }
+
+            // if (currentCount >= 5) {
+            //     if (!targetBox.dataset.alertShown) {
+            //         alert("tu as 5 worker cest le max ! ");
+            //         targetBox.dataset.alertShown = "true"; // stoper de répéter
+            //         availableworkersbg.style.display="none";
+            //     }
+            //     return;
+            // }
+            //2
+            // let targetBox = document.querySelector(`.box${numberBox} .DivworkerInRoom`);
+            // if (!targetBox) {
+            //     console.log('box introuvable');
+            //     return;
+            // }
+
+            // let currentCount = targetBox.querySelectorAll('.workerinBox').length;
+
+            // if (currentCount >= 5) {
+            //     // Affiche l'alerte une seule fois
+            //     if (!targetBox.dataset.alertShown) {
+            //         alert("Tu as 5 workers, c'est le maximum !");
+            //         targetBox.dataset.alertShown = "true"; // empêche alert répétée
+            //     }
+
+            //     // Fermer le modal pour que l'utilisateur ne puisse pas ajouter
+            //     availableworkersbg.style.display = "none";
+
+            //     return; // arrêter le code ici pour ne pas ajouter de worker
+            // } else {
+            //     // Reset de l'alert si on supprime un worker plus tard
+            //     if (targetBox.dataset.alertShown) {
+            //         delete targetBox.dataset.alertShown;
+            //     }
+            // }
+            // 3
+            let box = document.querySelector(`.box${numberBox} .DivworkerInRoom`);
+            if (!box) {
+                console.log('box introuvable');
+                return;
+            }
+
+            let conteurW = box.querySelectorAll('.workerinBox').length;
+
+            // Si la box est déjà pleine
+            if (conteurW >= 5) {
+                if (!box.dataset.alertShown) {
+                    alert("Tu as 5 workers, c'est le maximum !");
+                    box.dataset.alertShown = "true";
+                }
+                //
+                return;
+            } else {
+                // Si la box n'est pas pleine, on peut afficher le modal et ajouter
+                if (box.dataset.alertShown) {
+                    delete box.dataset.alertShown;
+                }
+            }
+
+            // 
+
+            div.addEventListener('click', () => {
+                // let targetBox = document.querySelector(`.box${numberBox} .DivworkerInRoom`);
+                // if (!targetBox) return;
+
+                // let currentCount = targetBox.querySelectorAll('.workerinBox').length;
+
+                // if (currentCount >= 5) {
+                //     alert("Tu as 5 workers, c'est le maximum !");
+                //     return; // Stop ici, pas d'ajout
+                // }
+                // // console.log(div);
 
                 const workerToMove = usworker.find(wor => {
                     if ((wor.id === ele.id) || (wor.role === ele.role)) {
@@ -249,11 +320,9 @@ function filterSelonRole(usworker, salle, numberBox) {
                         affichierWorkerInBox(numberBox, usworker1);
                         availableworkersbg.style.display = "none";
 
-
                     }
                 });
                 console.log(workerToMove);
-
 
 
             })
@@ -264,16 +333,22 @@ function filterSelonRole(usworker, salle, numberBox) {
         h1.innerHTML = 'No workers';
         availableworkersList.appendChild(h1);
     }
-    availableworkersbg.style.display = "flex";
+    // Afficher le modal si le nbr des worker inferieur de 5
+    let divWor = document.querySelector(`.box${numberBox} .DivworkerInRoom`);
+    if (divWor.querySelectorAll('.workerinBox').length < 5) {
+        availableworkersbg.style.display = "flex";
+    }
+    // availableworkersbg.style.display = "flex";
 }
+
 
 
 function affichierWorkerInBox(numbox, worker) {
 
-
+    // console.log(DivworkerInRoom);
     // console.log(worker);
-
     let div = document.createElement('div');
+
     let roleAb;
     if (worker.role === 'Receptionnistes') {
         roleAb = 'Recp'
@@ -290,37 +365,57 @@ function affichierWorkerInBox(numbox, worker) {
         roleAb = 'Ar'
     }
     if (worker.statusWorker != 'unsigned') {
-
         let box = document.querySelector(`.box${numbox} .DivworkerInRoom`);
+        // let lengthbox = box.querySelectorAll(`.workerinBox`).length;
+
         if (box.querySelector(`.workerinBox[data-id="${worker.id}"]`)) return;
         if (!worker) return;
         // console.log(box);
-        let name = worker.name.slice(0, 6).trim()
+        let name = worker.name.slice(0, 6).trim();
+
+
         div.innerHTML = `
-            <div class="workerinBox flex justify-evenly items-center bg-[#919090] w-[8rem] h-[3rem] text-[12px] rounded-[5px] cursor-pointer"
-                data-id="${worker.id}" data-role="${worker.role}" data-status="${worker.statusWorker}">
-                <img src="${worker.image}"
-                    class="w-9 rounded-4xl h-9" alt="none">
-                <div>
-                    <h1>${name}</h1>
+        <div class="workerinBox flex justify-evenly items-center bg-[#919090] w-[8rem] h-[3rem] text-[12px] rounded-[5px] cursor-pointer"
+        data-id="${worker.id}" data-role="${worker.role}" data-status="${worker.statusWorker}">
+        <img src="${worker.image}"
+        class="w-9 rounded-4xl h-9" alt="none">
+        <div>
+        <h1>${name}</h1>
                     <h3>${roleAb}</h3>
                 </div>
                 <img src="images/delete-1-svgrepo-com (1).svg" class="redirigerWorkerBtn w-6 rounded-4xl h-6 cursor-pointer" alt="">
-
-            </div>
+                
+                </div>
         `
         box.appendChild(div);
+        // }
+        // else{
+        //     alert("cest le maximum");
+        //     return;
+        // }
     }
 }
 //event de rediriger un worker vers sidebar / 'unsigned' 
 let divMain = document.querySelector('.divMain');
 
+
+
+
+
+//event de detail et rederige
 divMain.addEventListener('click', (e) => {
+    //le div pour affcicher le details
+
+    let div = e.target.closest('.workerinBox');
+    if (!div) return;
+
+    //le click sur le button de redirige
     if (e.target.classList.contains('redirigerWorkerBtn')) {
-        let divworker = e.target.closest('.workerinBox ');
-        //    console.log(divworker.getAttribute('data-status'));
-        let idToRedirige = divworker.getAttribute('data-id');
-        //    console.log(idToRedirige);
+        e.stopPropagation();//
+
+
+        let idToRedirige = div.getAttribute('data-id');
+
 
         worker = worker.map(ele => {
             if (Number(ele.id) === Number(idToRedirige)) {
@@ -330,82 +425,80 @@ divMain.addEventListener('click', (e) => {
         })
         localStorage.setItem('worker', JSON.stringify(worker));
 
-        redirigeToUnsigned(divworker, worker);
-
+        redirigeToUnsigned(div, worker);
+        return
     }
+    let workerId = div.getAttribute('data-id');
+    // console.log(workerId);
+    affichierDetails(workerId);
 
 })
 //evenet pour afichier le detail dun worker
-divMain.addEventListener('click', (e) => {
-    let div = e.target.closest('.workerinBox');
-let workerId = div.getAttribute('data-id');
-console.log(workerId);
 
-        affichierDetails(workerId);
-   
-})
 
-let modalDetailWorkerBg=document.querySelector('.modalDetailWorkerBg');
+let modalDetailWorkerBg = document.querySelector('.modalDetailWorkerBg');
 // detail du qorker
-function affichierDetails(workerId){
-    modalDetailWorkerBg.innerHTML='';
-    let workerD=worker.find(w=>Number(w.id)===Number(workerId));
+function affichierDetails(workerId) {
+    modalDetailWorkerBg.innerHTML = '';
+    let workerD = worker.find(w => Number(w.id) === Number(workerId));
     // console.log(workerD);
-    
-    let sectionModalDetailWorker=document.createElement('section');
-    sectionModalDetailWorker.setAttribute('class','modalDetailWorker bg-[#aaaaaae6] w-99 h-115 flex flex-col justify-evenly items- mt-10 ms-10 p-3 rounded-[10px] relative');
-    sectionModalDetailWorker.innerHTML=`
-        <img src="images/remove-svgrepo-com.svg" class="closeModal absolute w-[33px] left-[21.9rem] top-[10px] cursor-pointer" alt="">
-        <header class="flex justify-evenly items-center">
-            <div>
-                <img class="imgWorker w-30 h-30 rounded-[50%] border"
-                    src="${workerD.image}"  alt="not found">
-            </div>
-            <div class="">
-                <h2 class="text-2xl lora-font">${workerD.name}</h2>
-                <h4 class="Inter">${workerD.role}</h4>
-            </div>
-        </header>
-        <section class="contact flex justify-evenly">
-            <h5>${workerD.email}</h5>
-            <h6>${workerD.phone}</h6>
-            <h6>${workerD.statusWorker}</h6>
-        </section>
-        <hr class="w-[50%]  text-[#484848] text-center mx-auto">
-        <div class="Exp flex flex-col justify-evenly gap-y-3">
-            <h2 class="text-center">expériences : </h2>
-            
-            ${workerD.experience.map(exp=> `
-            <div class="flex justify-evenly ">
-                <h5>jobTitle : ${exp.jobTitle}</h5>
-                <h5>companyName : ${exp.CompanyName}</h5>
-            </div>
-            <div class="dateFromTo flex justify-evenly -ms-[2.6rem]">
-                <h5>from : ${exp.dateDebut}</h5>
-                <h5>To : ${exp.dateFin} </h5>
-            </div>
-            <div class="flex flex justify-evenly  gap-5">
-                <div class="text-center">
-                    <h5>Mission :</h5>
-                    <p>
-                        ${exp.Missions}
-                    </p>
-                </div>
-                <div class="text-center">
-                    <h5>Description :</h5>
-                    <p>
-                       ${exp.Description}
-                    </p>
-                </div>
-            </div>
 
+    let sectionModalDetailWorker = document.createElement('section');
+    sectionModalDetailWorker.setAttribute('class', 'modalDetailWorker rounded-[5px] w-99 h-115 fixed top-[31px] right-[33%]  bg-[black/50] flex justify-end items-start  overflow-y-auto'
+    );
+    sectionModalDetailWorker.innerHTML = `
+        <div class="divdetail bg-[#aaaaaae6] w-full max-w-md h-full p-6 flex flex-col overflow-y-auto shadow-xl relative">
+        <img src="images/remove-svgrepo-com.svg" 
+            class="closeModal absolute w-8 right-4 top-4 cursor-pointer hover:scale-110 transition-transform" 
+            alt="Close">
+
+        <div class="flex flex-col items-center mb-6">
+            <img src="${workerD.image}" 
+                class="w-24 h-24 rounded-full border border-gray-300 object-cover mb-3">
+            <h2 class="text-2xl font-semibold">${workerD.name}</h2>
+            <h4 class="text-gray-600">${workerD.role}</h4>
+        </div>
+
+        <section class="mb-6 space-y-2 text-gray-700">
+            <p><span class="font-semibold">Email:</span> ${workerD.email}</p>
+            <p><span class="font-semibold">Phone:</span> ${workerD.phone}</p>
+            <p><span class="font-semibold">Status:</span> ${workerD.statusWorker}</p>
+        </section>
+
+        <hr class="border-gray-300 mb-4">
+
+        <div class="Exp flex flex-col gap-4">
+            <h2 class="text-lg font-semibold text-center">Expériences</h2>
+
+            ${workerD.experience.map(exp => `
+                <div class="bg-[#c5c5c5a4] rounded-lg p-4 shadow flex flex-col gap-3">
+                    <div class="flex justify-between text-gray-800 font-medium">
+                        <span>${exp.jobTitle}</span>
+                        <span>${exp.CompanyName}</span>
+                    </div>
+                    <div class="flex justify-between text-gray-500 text-sm">
+                        <span>From: ${exp.dateDebut}</span>
+                        <span>To: ${exp.dateFin}</span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <div>
+                            <h5 class="font-semibold">Mission:</h5>
+                            <p class="text-gray-700">${exp.Missions}</p>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold">Description:</h5>
+                            <p class="text-gray-700">${exp.Description}</p>
+                        </div>
+                    </div>
+                </div>
             `).join('')}
-        </div>`
-    
-        
+        </div>
+    </div>
+`;
+
     modalDetailWorkerBg.appendChild(sectionModalDetailWorker);
 
-    modalDetailWorkerBg.style.display="flex";
+    modalDetailWorkerBg.style.display = "flex";
 
 }
 
@@ -415,20 +508,6 @@ function redirigeToUnsigned(divworker, worker) {
     listWorkersUnsigned.appendChild(divworker);
     AfficherWorker(worker);
 }
-
-
-// divMain.addEventListener('click',(e)=>{
-//     if (e.target.classList.contains('btnAddToRooms')){
-//         unsignedWorkerListePlus()
-//         availableworkersbg.style.display="flex";
-//     }
-
-// //    if (e.target.closest('.closeModal')) {
-// //     console.log("jjjjjj");
-
-// //     availableworkersbg.style.display = "none";
-// // }
-// })
 
 
 // ajouter des experience
@@ -516,14 +595,12 @@ function validerForm(inputsExperience) {
             } else {
                 ele.placeholder = ""
                 ele.style.border = "none";
-                // isvalid=true;
             }
         }
     })
 
 
-    // les input des experiance
-    // console.log(inputsExperience);
+
 
     inputsExperience.forEach(ele => {
         if (!ele.value.trim()) {
@@ -634,7 +711,6 @@ function addToLocalStorage() {
 AfficherWorker(worker);
 function AfficherWorker(worker) {
     listWorkersUnsigned.innerHTML = '';
-    // document.querySelector(".DivworkerInRoom").innerHTML = '';
     worker.forEach(ele => {
 
         if (ele.statusWorker === "unsigned") {

@@ -8,6 +8,7 @@
     <title>Virtual Sphere</title>
     <script src="Addworker.js" defer></script>
     <style>
+
         .formAddContainer {
             display: none;
             justify-content: center;
@@ -55,18 +56,6 @@
             background-color: rgb(0 0 0 / 18%);
 
         }
-        .modalDetailWorkerBg{
-             display: none;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgb(0 0 0 / 18%);
-        }
-
         .availableworkersList::-webkit-scrollbar {
             width: 8px;
         }
@@ -85,7 +74,31 @@
         .availableworkersList::-webkit-scrollbar-thumb:hover {
             background-color: #777;
         }
-
+        .modalDetailWorkerBg{
+             display: none;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0 0 0 / 18%);
+        }
+        .modalDetailWorker .divdetail::-webkit-scrollbar {
+            width: 8px;
+        }
+        .modalDetailWorker .divdetail::-webkit-scrollbar-track {
+            background-color: #eee;
+            border-radius: 12px;
+        }
+        .modalDetailWorker .divdetail::-webkit-scrollbar-thumb {
+            background-color: #777;
+            border-radius: 12px;
+        }
+        .modalDetailWorker .divdetail::-webkit-scrollbar-thumb:hover {
+            background-color: #777;
+        }
 
         /* pour sidebar */
         .workernoUnsignedSide::-webkit-scrollbar {
@@ -133,18 +146,18 @@
 
                 <!-- salle de conference -->
                 <div class="box1 absolute  " style="top: 1%; left: 0.5%; width: 38.3%; height: 33%;">
-                    <div class="flex justify-between ">
-                        <button class="btnAddToRooms BtnAddconferenceRom px-2 rounded bg-[#A8BBA3]">+</button>
-                        <h2 class="mr-6 mt-[3px]">salle de conference</h2>
+                    <div class="flex justify-between mb-3">
+                        <button class="btnAddToRooms BtnAddconferenceRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
+                        <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">salle de conference</h2>
                     </div>
-                    <div class="DivworkerInRoom  flex justify-around items-center flex-wrap" style="position: absolute;top: 13%;left: 1%;width: 97%;height: 84%;"></div>
+                    <div class="DivworkerInRoom  flex justify-around items-center flex-wrap" style="position: absolute;top: 14%;left: 1%;width: 97%;height: 84%;"></div>
                 </div>
 
                 <!--salle des serveur -->
                 <div class="box2 absolute   " style="top: 1%; left: 54.2%; width: 22.9%; height: 35.7%;">
                     <div class="flex justify-between ">
-                        <button class="btnAddToRooms BtnAddServerRom px-2 rounded bg-[#A8BBA3]">+</button>
-                        <h2 class="mr-6 mt-[3px]">salle des serveur</h2>
+                        <button class="btnAddToRooms BtnAddServerRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
+                        <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">salle des serveur</h2>
                     </div>
                     <div class="DivworkerInRoom flex justify-around items-center  flex-wrap" style="position: absolute;top: 13%;left: 1%;width: 97%;height: 84%;"></div>
                 </div>
@@ -153,8 +166,8 @@
                 <!--salle de securite -->
                 <div class="box3 absolute  " style="top: 1%;left: 77%; width: 23%; height: 35.7%;">
                     <div class="flex justify-between ">
-                        <button class="btnAddToRooms BtnAddSecuriteeRom px-2 rounded bg-[#A8BBA3]">+</button>
-                        <h2 class="mr-6 mt-[3px]">salle de securite </h2>
+                        <button class="btnAddToRooms BtnAddSecuriteeRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
+                        <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">salle de securite </h2>
                     </div>
                     <div class="DivworkerInRoom flex justify-around items-center  flex-wrap" style="position: absolute;top: 13%;left: 1%;width: 97%;height: 84%;"></div>
                 </div>
@@ -162,27 +175,27 @@
                 <!-- salle reseption -->
                 <div class="box4 absolute  " style="top: 34%;left: 0.5%; width: 38.3%; height: 65.7%;">
                     <div class="flex justify-between ">
-                        <button class="btnAddToRooms BtnAddreseptionRom px-2 rounded bg-[#A8BBA3]">+</button>
-                        <h2 class="mr-6 mt-[3px]">salle de reseption</h2>
+                        <button class="btnAddToRooms BtnAddreseptionRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
+                        <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">salle de reseption</h2>
                     </div>
                     <div class="DivworkerInRoom flex justify-around items-center  flex-wrap " style="position: absolute;top: 13%;left: 1%;width: 97%;height: 84%;"></div>
                 </div>
 
                 <!-- salle des personel -->
-                <div class="box5 absolute  " style="top: 66%; left: 55%; width: 22.5%; height: 34%;">
+                <div class="box5 absolute  " style="top: 66%; left: 55%; width: 23%; height: 34%;">
                     <div class="flex justify-between ">
-                        <button class="btnAddToRooms BtnAddPersonelRom px-2 rounded bg-[#A8BBA3]">+</button>
-                        <h2 class="mr-6 mt-[3px]">salle des personel </h2>
+                        <button class="btnAddToRooms BtnAddPersonelRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
+                        <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">salle des personel </h2>
                     </div>
                     <div class="DivworkerInRoom flex justify-around items-center flex-wrap " style="position: absolute;top: 13%;left: 1%;width: 97%;height: 84%;"></div>
                 </div>
 
                 <!-- salle d'archives  -->
-                <div class="box6 absolute  " style="top: 66%; left: 77.5%; width: 22.9%; height: 34%;"
+                <div class="box6 absolute  " style="top: 66%; left: 77.5%; width: 23%; height: 34%;"
                     data-zone="Autre">
                     <div class="flex justify-between ">
-                        <button class="btnAddToRooms BtnAddArchiveRom px-2 rounded bg-[#A8BBA3]">+</button>
-                        <h2 class="mr-6 mt-[3px]">salle d'archives </h2>
+                        <button class="btnAddToRooms BtnAddArchiveRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
+                        <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">salle d'archives </h2>
                     </div>
                     <div class="DivworkerInRoom flex justify-around items-center  flex-wrap" style="position: absolute;top: 13%;left: 0%;width: 97%;height: 84%;"></div>
                 </div>
@@ -245,34 +258,16 @@
     </div>
     <!-- le modal detail worker -->
      <section class="modalDetailWorkerBg">
-    <!-- <section class="modalDetailWorker bg-[#aaaaaae6] w-120 h-150 flex flex-col justify-evenly items- mt-30 ms-10 p-3 rounded-[10px] relative">
-        
-    </section> -->
+            <!-- le detail  -->
     </section>
+    
     <!-- le modal available worker -->
     <section class="availableworkersbg flex-col">
         <section
             class="availableworkersList  w-80 max-h-103 flex flex-col justify-center items-center bg-[#bbbbbbba] py-5 pt-47 gap-3 relative rounded-[5px] overflow-y-auto">
-            <!-- <h2 class="text-xl Inter">available worker</h2> -->
-            <!-- <img src="images/remove-svgrepo-com.svg"
-                class="closeModal absolute w-[33px] left-[17.3rem] top-[3px] cursor-pointer" alt="">
-            <h2 class="text-xl Inter">available worker</h2>
-
-            <div class="worker flex justify-evenly items-center bg-[#919090] w-[15rem] h-[4rem] rounded-[5px] cursor-pointer"
-                data-id="">
-                <img src="https://i.pinimg.com/1200x/1c/85/2e/1c852ea928150dfcf54c5457dbca0a35.jpg"
-                    class="w-13 rounded-4xl h-13" alt="none">
-                <div>
-                    <h1>Maria ELgotby</h1>
-                    <h3>My Role is IT</h3>
-                </div>
-                <img src="images/delete-1-svgrepo-com (1).svg" class="btnDeleteWorker w-6 rounded-4xl h-6 cursor-pointer" alt="">
-            </div> -->
-
+            <!-- available qorker -->
         </section>
     </section>
-
-
 
 
 </body>
