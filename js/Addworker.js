@@ -373,26 +373,20 @@ function affichierWorkerInBox(numbox, worker) {
         // console.log(box);
         let name = worker.name.slice(0, 6).trim();
 
-
         div.innerHTML = `
-        <div class="workerinBox flex justify-evenly items-center bg-[#919090] w-[8rem] h-[3rem] text-[12px] rounded-[5px] cursor-pointer"
+        <div class="workerinBox flex justify-evenly items-center bg-[#919090] w-[5rem] h-[34px] text-[10px] rounded-[5px] cursor-pointer"
         data-id="${worker.id}" data-role="${worker.role}" data-status="${worker.statusWorker}">
-        <img src="${worker.image}"
-        class="w-9 rounded-4xl h-9" alt="none">
+        <img src="${worker.image}" class="w-6 rounded-4xl h-6" alt="none">
         <div>
         <h1>${name}</h1>
                     <h3>${roleAb}</h3>
                 </div>
-                <img src="images/delete-1-svgrepo-com (1).svg" class="redirigerWorkerBtn w-6 rounded-4xl h-6 cursor-pointer" alt="">
+                <img src="images/delete-1-svgrepo-com (1).svg" class="redirigerWorkerBtn w-4 rounded-4xl h-4 cursor-pointer" alt="">
                 
                 </div>
         `
         box.appendChild(div);
-        // }
-        // else{
-        //     alert("cest le maximum");
-        //     return;
-        // }
+       
     }
 }
 //event de rediriger un worker vers sidebar / 'unsigned' 
@@ -645,7 +639,7 @@ function validerForm(inputsExperience) {
 //fetcher sur les roles dun worker  
 fetcherRoles()
 function fetcherRoles() {
-    fetch('./role.json').then(resp => resp.json()).then(data => {
+    fetch('./json/role.json').then(resp => resp.json()).then(data => {
         data.roles.forEach(ele => {
 
             let option = document.createElement('option');
