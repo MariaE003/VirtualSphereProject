@@ -212,7 +212,7 @@ function filterSelonRole(usworker, salle, numberBox) {
             let div =document.createElement('div');
             div.innerHTML = `
             <div class="workerToAdd flex justify-evenly items-center bg-[#919090] w-[15rem] h-[4rem] rounded-[5px] cursor-pointer"
-                data-id="${ele.id}" data-role="${ele.role}">
+                data-id="${ele.id}" data-role="${ele.role}" data-status="${ele.statusWorker}">
                 <img src="${ele.image}"
                     class="w-13 rounded-4xl h-13" alt="none">
                 <div>
@@ -224,9 +224,19 @@ function filterSelonRole(usworker, salle, numberBox) {
         `
             availableworkersList.appendChild(div);
             div.addEventListener('click',()=>{
-                console.log(div);
+                // console.log(div);
                 
-                // usworker.filter
+                
+                const workerToMove=usworker.find(wor=>{
+                    if((wor.id===ele.id) ||(wor.role===ele.role)){
+                        // return wor;
+                        // div.remove();
+                        wor.statusWorker="conference Rom";
+                        console.log(div);
+                        
+                    
+                    }});
+                
 
             })
         });

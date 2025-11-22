@@ -97,13 +97,15 @@
         .workernoUnsignedSide::-webkit-scrollbar-thumb:hover {
             background-color: #777;
         }
+
     </style>
 
 </head>
 
-<body class="h-screen w-screen">
-    <main class="flex h-full">
-        <aside class="workernoUnsignedSide bg-[#A8BBA3] h-137.5  w-72 rounded-b-sm flex flex-col items-center gap-2 overflow-y-auto pb-7">
+<body class="w-full h-full overflow-hidden">
+    <main class="flex h-full w-full">
+        <aside
+            class="workernoUnsignedSide bg-[#A8BBA3] h-137.5  w-72 rounded-b-sm flex flex-col items-center gap-2 overflow-y-auto pb-7">
             <div class="flex justify-center items-center my-4">
                 <h1 class="mainTitle font-black font-bold text-[22px] lora-font">Virtual Sphere</h1>
             </div>
@@ -115,48 +117,65 @@
 
             </div>
         </aside>
-        <section class="relative flex-1 overflow-hidden">
-            <img src="/images/plan-worker.jpg" class="w-full h-full absolute" alt="">
-            <div class="divMain grid grid-cols-[1fr_15.6%_1fr_1fr] grid-rows-[1fr_1fr_1fr]  absolute">
-                <div class="box1  conferenceRoom  w-[24rem] h-46.5   border border-11 border-[#573131]  card flex justify-center items-start"
-                    data-zone="Reception">
-                    <button
-                        class="btnAddToRooms BtnAddconferenceRom  px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
-                    <div class="divConferenceRoom">
+        <section class="relative flex-1 overflow-hidden ">
+            <div class="relative w-full aspect-[16/9] overflow-x-hidden">
+            <img src="/images/plan-worker.jpg" class="w-full h-full  " alt="">
+            <div class="divMain absolute inset-0">
 
+                <!-- salle de conference -->
+                <div class="box1 absolute  " style="top: 1%; left: 0.5%; width: 38.3%; height: 33%;">
+                    <div class="flex justify-between ">
+                        <button class="btnAddToRooms BtnAddconferenceRom px-2 rounded bg-[#A8BBA3]">+</button>
+                        <h2 class="mr-6 mt-[3px]">salle de conference</h2>
+                    </div>
+                    <div class="divConferenceRoom"></div>
+                </div>
+
+                <!--salle des serveur -->
+                <div class="box2 absolute   " style="top: 1%; left: 54.2%; width: 22.9%; height: 35.7%;">
+                    <div class="flex justify-between ">
+                        <button class="btnAddToRooms BtnAddServerRom px-2 rounded bg-[#A8BBA3]">+</button>
+                        <h2 class="mr-6 mt-[3px]">salle des serveur</h2>
                     </div>
                 </div>
-                <div class=" box2 h-[105%] col-start-3 col-end-4 border border-11 border-[#573131]  bg-[#f9bcbc4e]  card  flex justify-center items-start"
-                    data-zone="Salle des serveurs">
-                    <button
-                        class="btnAddToRooms BtnAddServerRom px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
 
-                </div>
-                <div class=" box3 h-[105%] col-start-4 col-end-5  border border-11 border-[#573131]  bg-[#f9bcbc4e]  card  flex justify-center items-start"
-                    data-zone="Salle de securite">
-                    <button
-                        class="btnAddToRooms BtnAddSecuriteeRom px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
+
+                <!--salle de securite -->
+                <div class="box3 absolute  " style="top: 1%;left: 77%; width: 23%; height: 35.7%;">
+                    <div class="flex justify-between ">
+                        <button class="btnAddToRooms BtnAddSecuriteeRom px-2 rounded bg-[#A8BBA3]">+</button>
+                        <h2 class="mr-6 mt-[3px]">salle de securite </h2>
+                    </div>
                 </div>
 
-                <div class=" box4 w-[24rem] h-[196%] border border-11 border-[#573131]  bg-[#f9bcbc4e]  card  flex justify-center items-start"
-                    data-zone="Salle d'archives">
-                    <button
-                        class="btnAddToRooms BtnAddreseptionRom px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
-
+                <!-- salle reseption -->
+                <div class="box4 absolute  " style="top: 34%;left: 0.5%; width: 38.3%; height: 65.7%;">
+                    <div class="flex justify-between ">
+                        <button class="btnAddToRooms BtnAddreseptionRom px-2 rounded bg-[#A8BBA3]">+</button>
+                        <h2 class="mr-6 mt-[3px]">salle de reseption</h2>
+                    </div>
                 </div>
-                <div class=" box5 h-[102%]   col-start-3 col-end-4 row-start-3 -mt-3 border border-11 border-[#573131]   card  flex justify-center items-start"
-                    data-zone="Nettoyage">
-                    <button
-                        class="btnAddToRooms BtnAddPersonelRom px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
 
+                <!-- salle des personel -->
+                <div class="box5 absolute  " style="top: 66%; left: 55%; width: 22.5%; height: 34%;">
+                    <div class="flex justify-between ">
+                        <button class="btnAddToRooms BtnAddPersonelRom px-2 rounded bg-[#A8BBA3]">+</button>
+                        <h2 class="mr-6 mt-[3px]">salle des personel </h2>
+                    </div>
                 </div>
-                <div class="box6 h-[102%]  col-start-4 col-end-5 row-start-3 -mt-3 border border-11 border-[#573131]  bg-[#f9bcbc4e] card  flex justify-center items-start"
+
+                <!-- salle d'archives  -->
+                <div class="box6 absolute  " style="top: 66%; left: 77.5%; width: 22.9%; height: 34%;"
                     data-zone="Autre">
-                    <button
-                        class="btnAddToRooms BtnAddArchiveRom px-2  text-center rounded-[5px] bg-[#A8BBA3] cursor-pointer ">+</button>
-
+                    <div class="flex justify-between ">
+                        <button class="btnAddToRooms BtnAddArchiveRom px-2 rounded bg-[#A8BBA3]">+</button>
+                        <h2 class="mr-6 mt-[3px]">salle d'archives </h2>
+                    </div>
                 </div>
+
             </div>
+            </div>
+
         </section>
     </main>
     <div class="formAddContainer">
@@ -207,7 +226,6 @@
             </div>
             <button type="submit"
                 class="btnSubmit bg-[#505050] p-1 rounded-[5px] text-white cursor-pointer w-57 flex justify-center items-center mx-auto my-2 ">Send</button>
-
 
         </form>
     </div>
@@ -265,8 +283,8 @@
     <!-- le modal available worker -->
     <section class="availableworkersbg flex-col">
         <section
-        class="availableworkersList  w-80 max-h-103 flex flex-col justify-center items-center bg-[#bbbbbbba] py-5 pt-47 gap-3 relative rounded-[5px] overflow-y-auto">
-        <!-- <h2 class="text-xl Inter">available worker</h2> -->
+            class="availableworkersList  w-80 max-h-103 flex flex-col justify-center items-center bg-[#bbbbbbba] py-5 pt-47 gap-3 relative rounded-[5px] overflow-y-auto">
+            <!-- <h2 class="text-xl Inter">available worker</h2> -->
             <!-- <img src="images/remove-svgrepo-com.svg"
                 class="closeModal absolute w-[33px] left-[17.3rem] top-[3px] cursor-pointer" alt="">
             <h2 class="text-xl Inter">available worker</h2>
