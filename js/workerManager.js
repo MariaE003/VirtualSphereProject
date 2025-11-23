@@ -67,6 +67,7 @@ AddExperienceBtn.addEventListener('click', () => {
 formAdd.addEventListener('submit', (e) => {
     e.preventDefault();
     validerForm(inputsExperience);
+    formAdd.reset();
 
 })
 
@@ -239,9 +240,7 @@ function filterSelonRole(usworker, salle, numberBox) {
                         let workerToRemoveFromSideBar = document.querySelector(`.listWorkers .worker[data-id="${ele.id}"]`);
                         if (workerToRemoveFromSideBar) {
                             workerToRemoveFromSideBar.remove();
-                        } else {
-                            console.log('element non trouve');
-                        }
+                        } 
 
                         // wor.statusWorker="conference Rom";//attribute
                         let usworker1 = usworker.find(w => w.id === ele.id);
@@ -258,7 +257,6 @@ function filterSelonRole(usworker, salle, numberBox) {
 
                     }
                 });
-                console.log(workerToMove);
 
 
             })
@@ -346,9 +344,6 @@ function affichierWorkerInBox(numbox, worker) {
 //event de rediriger un worker vers sidebar / 'unsigned' 
 let divMain = document.querySelector('.divMain');
 
-
-
-
 //event de detail et rederige
 divMain.addEventListener('click', (e) => {
     //le div pour affcicher le details
@@ -388,13 +383,11 @@ function affichierDetails(workerId) {
     modalDetailWorkerBg.innerHTML = '';
     let workerD = worker.find(w => Number(w.id) === Number(workerId));
     let position;
-    // if (workerD.statusWorker === "box1") {
-    //     position = "salle de conference";
-    // }
+    
+
     position = workerD.statusWorker === "box1" ? position = "salle de conference" : workerD.statusWorker === "box2" ? position = "salle des serveur " : workerD.statusWorker === "box3" ?
         position = "salle de securite " : workerD.statusWorker === "box4" ? position = "salle reseption " : workerD.statusWorker === "box5" ? position = "salle des personel" :workerD.statusWorker === "box6" ? position ="salle d'archives " :"unsigned"
-    // console.log(workerD);
-    // console.log(position);
+   
     
 
     let sectionModalDetailWorker = document.createElement('section');
@@ -424,7 +417,8 @@ function affichierDetails(workerId) {
         <div class="Exp flex flex-col gap-4">
             <h2 class="text-lg font-semibold text-center">Expériences</h2>
 
-            ${workerD.experience.map(exp => `
+            ${ workerD.experience.length>0?
+                workerD.experience.map(exp => `
                 <div class="bg-[#c5c5c5a4] rounded-lg p-4 shadow flex flex-col gap-3">
                     <div class="flex justify-between text-gray-800 font-medium">
                         <span>${exp.jobTitle}</span>
@@ -445,7 +439,9 @@ function affichierDetails(workerId) {
                         </div>
                     </div>
                 </div>
-            `).join('')}
+               
+            `).join(''): `<h2 class="text-gray-600 text-center">Aucune expérience</h2>`}
+
         </div>
     </div>
 `;
@@ -516,7 +512,8 @@ function validerForm(inputsExperience) {
     let regexName = /^[a-zA-Z\s]+$/;
     let regexEmail = /^[a-zA-Z0-9._-]+@gmail\.com$/;
     let regexPhone = /^(06|07)[0-9]{8}$/;
-    let regexUrl = /^https:\/\/.+\.(jpg|png|gif)$/;
+    let regexUrl = /^https:\/\/.+$/;
+    // \.(jpg|png|gif)
 
     let isvalid = true;
     // les input deja exist
@@ -668,7 +665,7 @@ function AfficherWorker(worker) {
 
         if (ele.statusWorker === "unsigned") {
             let divWorkerUnsigned = document.createElement('div');
-            divWorkerUnsigned.classList.add("worker", "flex", "justify-evenly", "items-center", "bg-[#655e5e6f]", "w-[15rem]", "h-[4rem]", "rounded-[5px]");
+            divWorkerUnsigned.classList.add("worker", "flex", "justify-evenly", "items-center", "bg-[#655e5e6f]", "w-[15rem]", "h-[4rem]", "rounded-[5px]","cursor-pointer");
             divWorkerUnsigned.setAttribute('data-id', `${ele.id}`);
             // divWorkerUnsigned.setAttribute('data-role', `${ele.role}`);
             divWorkerUnsigned.innerHTML = `
