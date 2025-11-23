@@ -31,7 +31,7 @@ let AllInputs = Array.from(document.querySelectorAll('input,textarea,select'));
 
 //modal des worker disponible et worker 
 let availableworkersbg = document.querySelector('.availableworkersbg')
-let availableworkersList = document.querySelector('.availableworkersList')
+let availableworkersList= document.querySelector('.availableworkersList')
 
 let idExperience = 0;
 
@@ -67,7 +67,7 @@ AddExperienceBtn.addEventListener('click', () => {
 formAdd.addEventListener('submit', (e) => {
     e.preventDefault();
     validerForm(inputsExperience);
-    formAdd.reset();
+    // formAdd.reset();
 
 })
 
@@ -262,10 +262,15 @@ function filterSelonRole(usworker, salle, numberBox) {
             })
         });
     } else {
+        let imgremove = document.createElement('img')
+        imgremove.src = 'images/remove-svgrepo-com.svg';
+        imgremove.classList.add('closeModal')
+        imgremove.style.cssText='position: absolute;top: 0.6rem;width: 2rem;left: 17rem;cursor:pointer; close'
         let h1 = document.createElement('h4');
         h1.setAttribute('class', 'text-xl Inter')
         h1.innerHTML = 'No workers';
-        availableworkersList.appendChild(h1);
+        availableworkersList.append(imgremove,h1);
+        // availableworkersList.appendChild(h1);
     }
     // Afficher le modal si le nbr des worker inferieur de 5
     let divWor = document.querySelector(`.box${numberBox} .DivworkerInRoom`);
@@ -349,6 +354,19 @@ let sidebarWorkers=document.querySelector(".listWorkers");
 sidebarWorkers.addEventListener('click',(e)=>{
     let div=e.target.closest('.worker');
     if(!div)return;
+
+    //pour la supp
+     if (e.target.classList.contains('btnDeleteWorker')) {
+        e.stopPropagation();//stope appliquer leveneement sur le parent en applique event juste sur le child
+        // let idToRedirige = div.getAttribute('data-id');
+        // deleteWorker()
+        // console.log("test");
+        return
+    }
+
+
+
+
     let workerId = div.getAttribute('data-id');
     // console.log(workerId);
     affichierDetails(workerId);
