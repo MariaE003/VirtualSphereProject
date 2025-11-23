@@ -216,6 +216,12 @@
   .top-\[-1px\] {
     top: -1px;
   }
+  .top-\[1\%\] {
+    top: 1%;
+  }
+  .top-\[1\] {
+    top: 1;
+  }
   .top-\[1px\] {
     top: 1px;
   }
@@ -225,14 +231,32 @@
   .top-\[3px\] {
     top: 3px;
   }
+  .top-\[5\%\] {
+    top: 5%;
+  }
+  .top-\[7\%\] {
+    top: 7%;
+  }
   .top-\[7\] {
     top: 7;
   }
   .top-\[7px\] {
     top: 7px;
   }
+  .top-\[8\%\] {
+    top: 8%;
+  }
+  .top-\[10\%\] {
+    top: 10%;
+  }
   .top-\[10px\] {
     top: 10px;
+  }
+  .top-\[13\%\] {
+    top: 13%;
+  }
+  .top-\[15\] {
+    top: 15;
   }
   .top-\[19px\] {
     top: 19px;
@@ -294,6 +318,12 @@
   .right-\[300px\] {
     right: 300px;
   }
+  .left-\[1\%\] {
+    left: 1%;
+  }
+  .left-\[1\] {
+    left: 1;
+  }
   .left-\[17\.3rem\] {
     left: 17.3rem;
   }
@@ -320,6 +350,9 @@
   }
   .left-\[62\.5rem\] {
     left: 62.5rem;
+  }
+  .z-1 {
+    z-index: 1;
   }
   .z-50 {
     z-index: 50;
@@ -602,6 +635,9 @@
   }
   .w-\[100\%\] {
     width: 100%;
+  }
+  .w-\[102\%\] {
+    width: 102%;
   }
   .w-full {
     width: 100%;

@@ -217,59 +217,15 @@ function filterSelonRole(usworker, salle, numberBox) {
 
             availableworkersList.appendChild(div);
 
-            // // 
-            // let targetBox = document.querySelector(`.box${numberBox} .DivworkerInRoom`);
-            // let currentCount = targetBox.querySelectorAll('.workerinBox').length;
-
-            // if (!targetBox) {
-            //     console.log('box introuvable');
-            //     return;
-            // }
-
-            // if (currentCount >= 5) {
-            //     if (!targetBox.dataset.alertShown) {
-            //         alert("tu as 5 worker cest le max ! ");
-            //         targetBox.dataset.alertShown = "true"; // stoper de répéter
-            //         availableworkersbg.style.display="none";
-            //     }
-            //     return;
-            // }
-            //2
-            // let targetBox = document.querySelector(`.box${numberBox} .DivworkerInRoom`);
-            // if (!targetBox) {
-            //     console.log('box introuvable');
-            //     return;
-            // }
-
-            // let currentCount = targetBox.querySelectorAll('.workerinBox').length;
-
-            // if (currentCount >= 5) {
-            //     // Affiche l'alerte une seule fois
-            //     if (!targetBox.dataset.alertShown) {
-            //         alert("Tu as 5 workers, c'est le maximum !");
-            //         targetBox.dataset.alertShown = "true"; // empêche alert répétée
-            //     }
-
-            //     // Fermer le modal pour que l'utilisateur ne puisse pas ajouter
-            //     availableworkersbg.style.display = "none";
-
-            //     return; // arrêter le code ici pour ne pas ajouter de worker
-            // } else {
-            //     // Reset de l'alert si on supprime un worker plus tard
-            //     if (targetBox.dataset.alertShown) {
-            //         delete targetBox.dataset.alertShown;
-            //     }
-            // }
-            // 3
             let box = document.querySelector(`.box${numberBox} .DivworkerInRoom`);
+            let conteurW = box.querySelectorAll('.workerinBox').length;
+
             if (!box) {
                 console.log('box introuvable');
                 return;
             }
 
-            let conteurW = box.querySelectorAll('.workerinBox').length;
-
-            // Si la box est déjà pleine
+            //si le box contient plus que 5 personne
             if (conteurW >= 5) {
                 if (!box.dataset.alertShown) {
                     alert("Tu as 5 workers, c'est le maximum !");
@@ -278,7 +234,7 @@ function filterSelonRole(usworker, salle, numberBox) {
                 //
                 return;
             } else {
-                // Si la box n'est pas pleine, on peut afficher le modal et ajouter
+                // on  afficher le modal d;ajout si le box est < 5
                 if (box.dataset.alertShown) {
                     delete box.dataset.alertShown;
                 }
@@ -287,16 +243,6 @@ function filterSelonRole(usworker, salle, numberBox) {
             // 
 
             div.addEventListener('click', () => {
-                // let targetBox = document.querySelector(`.box${numberBox} .DivworkerInRoom`);
-                // if (!targetBox) return;
-
-                // let currentCount = targetBox.querySelectorAll('.workerinBox').length;
-
-                // if (currentCount >= 5) {
-                //     alert("Tu as 5 workers, c'est le maximum !");
-                //     return; // Stop ici, pas d'ajout
-                // }
-                // // console.log(div);
 
                 const workerToMove = usworker.find(wor => {
                     if ((wor.id === ele.id) || (wor.role === ele.role)) {
@@ -341,7 +287,26 @@ function filterSelonRole(usworker, salle, numberBox) {
     // availableworkersbg.style.display = "flex";
 }
 
+//les boxes vides
+function colorBoxVide() {
+    let numberBox = [1, 2, 3, 4, 5, 6];
+    numberBox.forEach(nubox => {
 
+        let box = document.querySelector(`.box${nubox} .DivworkerInRoom`);
+        // console.log(box.textContent);
+        let conteurW = box.querySelectorAll('.workerinBox').length;
+        // console.log(conteurW);
+
+        // let box = document.querySelector(`.box${nubox} .DivworkerInRoom`);
+        if (nubox != 1 && nubox != 5 && conteurW === 0) {
+            box.style.backgroundColor = "#ff00003b";
+
+        } else {
+            box.style.backgroundColor = "transparent";
+        }
+
+    });
+}
 
 function affichierWorkerInBox(numbox, worker) {
 
@@ -386,12 +351,12 @@ function affichierWorkerInBox(numbox, worker) {
                 </div>
         `
         box.appendChild(div);
-       
+
     }
+    colorBoxVide()
 }
 //event de rediriger un worker vers sidebar / 'unsigned' 
 let divMain = document.querySelector('.divMain');
-
 
 
 
@@ -405,8 +370,7 @@ divMain.addEventListener('click', (e) => {
 
     //le click sur le button de redirige
     if (e.target.classList.contains('redirigerWorkerBtn')) {
-        e.stopPropagation();//
-
+        e.stopPropagation();//stope appliquer leveneement sur le parent en applique event juste sur le child
 
         let idToRedirige = div.getAttribute('data-id');
 
@@ -501,6 +465,8 @@ function redirigeToUnsigned(divworker, worker) {
     divworker.remove();
     listWorkersUnsigned.appendChild(divworker);
     AfficherWorker(worker);
+    colorBoxVide()
+
 }
 
 
