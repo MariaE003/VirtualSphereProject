@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="src/output.css" rel="stylesheet">
     <title>Virtual Sphere</title>
-    <script src="./js/Addworker.js" defer></script>
+    <script src="./js/workerManager.js" defer></script>
     <style>
 
         .formAddContainer {
@@ -120,6 +120,9 @@
             background-color: #777;
         }
 
+        @media (orientation: landscape) {
+            
+        }
     </style>
 
 </head>
@@ -233,8 +236,7 @@
                     placeholder="0699230289">
 
                 <select
-                    class="role w-[13rem]  ps-2 h-10  rounded-[5px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]"
-                    id="">
+                    class="role w-[13rem]  ps-2 h-10  rounded-[5px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]">
                     <option value="">choisir un role</option>
                 </select>
             </div>
