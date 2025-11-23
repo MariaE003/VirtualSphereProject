@@ -20,16 +20,16 @@ let selectRole = document.querySelector(".role");
 let imgVeiw = document.querySelector('.imgVeiw')
 let urlImag = document.querySelector('.urlImag')
 let textNoImage = document.querySelector('.textNoImage')
-// console.log(btnDeleteExp);
 
-//inputs
+
+//tous les inputs
 let AllInputs = Array.from(document.querySelectorAll('input,textarea,select'));
 // console.log(AllInputs);
 
 
 
 
-//modal desn worker disponible et worker 
+//modal des worker disponible et worker 
 let availableworkersbg = document.querySelector('.availableworkersbg')
 let availableworkersList = document.querySelector('.availableworkersList')
 
@@ -37,19 +37,12 @@ let idExperience = 0;
 
 //tableau des worker
 let worker = JSON.parse(localStorage.getItem('worker')) || [];
-//tableau des experiences disponible
-
-//
 
 
 //ouvrir fermer le modale d'jout
 btnAddWorker.addEventListener('click', () => {
     formAddContainer.style.cssText = "display:flex;";
 });
-
-
-
-
 
 //fermer les button close
 document.addEventListener("click", (e) => {
@@ -65,13 +58,10 @@ let inputsExperience = [];
 //ajouter des experience
 AddExperienceBtn.addEventListener('click', () => {
     AddExperience();
-    // console.log(idExperience);
+
     inputsExperience = Array.from(document.querySelectorAll('.experienceDiv input, .experienceDiv textarea'));
-    // validerForm(inputsExperience);
-    // console.log(inputsExperience);
+
 })
-
-
 
 //la validation du formulaire
 formAdd.addEventListener('submit', (e) => {
@@ -310,8 +300,6 @@ function colorBoxVide() {
 
 function affichierWorkerInBox(numbox, worker) {
 
-    // console.log(DivworkerInRoom);
-    // console.log(worker);
     let div = document.createElement('div');
 
     let roleAb;
@@ -399,7 +387,15 @@ let modalDetailWorkerBg = document.querySelector('.modalDetailWorkerBg');
 function affichierDetails(workerId) {
     modalDetailWorkerBg.innerHTML = '';
     let workerD = worker.find(w => Number(w.id) === Number(workerId));
+    let position;
+    // if (workerD.statusWorker === "box1") {
+    //     position = "salle de conference";
+    // }
+    position = workerD.statusWorker === "box1" ? position = "salle de conference" : workerD.statusWorker === "box2" ? position = "salle des serveur " : workerD.statusWorker === "box3" ?
+        position = "salle de securite " : workerD.statusWorker === "box4" ? position = "salle reseption " : workerD.statusWorker === "box5" ? position = "salle des personel" :workerD.statusWorker === "box6" ? position ="salle d'archives " :"unsigned"
     // console.log(workerD);
+    // console.log(position);
+    
 
     let sectionModalDetailWorker = document.createElement('section');
     sectionModalDetailWorker.setAttribute('class', 'modalDetailWorker rounded-[5px] w-99 h-115 fixed top-[31px] right-[33%]  bg-[black/50] flex justify-end items-start  overflow-y-auto'
@@ -420,7 +416,7 @@ function affichierDetails(workerId) {
         <section class="mb-6 space-y-2 text-gray-700">
             <p><span class="font-semibold">Email:</span> ${workerD.email}</p>
             <p><span class="font-semibold">Phone:</span> ${workerD.phone}</p>
-            <p><span class="font-semibold">Status:</span> ${workerD.statusWorker}</p>
+            <p><span class="font-semibold">Status:</span> ${position}</p>
         </section>
 
         <hr class="border-gray-300 mb-4">
@@ -558,9 +554,6 @@ function validerForm(inputsExperience) {
             }
         }
     })
-
-
-
 
     inputsExperience.forEach(ele => {
         if (!ele.value.trim()) {
