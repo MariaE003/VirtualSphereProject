@@ -343,6 +343,17 @@ function affichierWorkerInBox(numbox, worker) {
 }
 //event de rediriger un worker vers sidebar / 'unsigned' 
 let divMain = document.querySelector('.divMain');
+let sidebarWorkers=document.querySelector(".listWorkers");
+
+//detail sidebar
+sidebarWorkers.addEventListener('click',(e)=>{
+    let div=e.target.closest('.worker');
+    if(!div)return;
+    let workerId = div.getAttribute('data-id');
+    // console.log(workerId);
+    affichierDetails(workerId);
+
+})
 
 //event de detail et rederige
 divMain.addEventListener('click', (e) => {
