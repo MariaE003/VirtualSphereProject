@@ -7,7 +7,6 @@
     <link href="src/output.css" rel="stylesheet">
     <link rel="stylesheet" href="./src/style.css">
     <title>Virtual Sphere</title>
-    <script src="./js/workerManager.js" defer></script>
     <style>
     </style>
 
@@ -16,7 +15,7 @@
 <body class="w-full h-full overflow-hidden">
     <main class="main flex h-full w-full ">
         <aside
-            class="workernoUnsignedSide bg-[#A8BBA3] h-auto  w-72 rounded-b-sm flex flex-col items-center gap-2 overflow-y-auto pb-7">
+        class="workernoUnsignedSide bg-[#A8BBA3] h-auto  w-72 rounded-b-sm flex flex-col items-center gap-2 overflow-y-auto pb-7">
             <div class="titleLogo flex justify-around items-center my-4 w-full">
                 <img src="images/Group.svg" class="w-12" alt="logo non trouve">
                 <h1 class="mainTitle font-black font-bold text-[22px] lora-font">Virtual Sphere</h1>
@@ -26,120 +25,119 @@
                 <button class="btnAddWorker bg-[#655e5e6f] rounded-[5px] p-1 cursor-pointer">+ Add Worker</button>
             </div>
             <div class="listWorkers flex flex-col gap-y-4 ">
-
+                
             </div>
         </aside>
         <section class="Mainplan  h-auto relative flex-1 overflow-hidden ">
             <div class="relative w-full aspect-[16/9] overflow-x-hidden">
                 <img src="/images/plan-worker.jpg" class="w-full h-full" alt="">
                 <div class="divMain absolute inset-0">
-
+                    
                     <!-- salle de conference -->
-                    <div class="boxes box1 salleConference absolute  "
+                    <section class="boxes box1 salleConference absolute  "
                         style="top: 1%; left: 0.5%; width: 38.3%; height: 33%;">
                         <div class="BtnTitle flex justify-between mb-3">
                             <button
                                 class="btnAddToRooms BtnAddconferenceRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
-                            <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">Conference</h2>
-                        </div>
-                        <div class="DivworkerInRoom DivworkerInRoomBox1  flex justify-around items-center flex-wrap"
+                                <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">Conference</h2>
+                            </div>
+                            <div class="DivworkerInRoom DivworkerInRoomBox1  flex justify-around items-center flex-wrap"
                             style="position: absolute;top: 14%;left: 1%;width: 97%;height: 84%;"></div>
-                    </div>
-
+                    </section>
+                    
                     <!--salle des serveur -->
-                    <div class="boxes box2 absolute  salleServeur "
-                        style="top: -3%; left: 54.2%; width: 22.9%; height: 38%;">
-                        <div class="BtnTitle flex justify-between absolute z-1 top-[10%] w-[102%]">
-                            <button
-                                class="btnAddToRooms BtnAddServerRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
-                            <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">Server
-                            </h2>
-                        </div>
-                        <div class="DivworkerInRoom DivworkerInRoomBox2 flex justify-around items-center  flex-wrap"
-                            style="position: absolute;top: 13%;left: 1%;width: 97%;height: 84%;"></div>
+                    <section class="boxes box2 absolute  salleServeur "
+                    style="top: -3%; left: 54.2%; width: 22.9%; height: 38%;">
+                    <div class="BtnTitle flex justify-between absolute z-1 top-[10%] w-[102%]">
+                        <button
+                        class="btnAddToRooms BtnAddServerRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
+                        <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">Server
+                        </h2>
                     </div>
+                    <div class="DivworkerInRoom DivworkerInRoomBox2 flex justify-around items-center  flex-wrap"
+                    style="position: absolute;top: 13%;left: 1%;width: 97%;height: 84%;"></div>
+                </section>
+                
+                
+                <!--salle de securite -->
+                <section class="boxes box3 absolute salleSecurite "
+                style="top: 1%;left: 77%; width: 23%; height: 35.7%;">
+                <div class="BtnTitle flex justify-between absolute w-[102%] z-1">
+                    <button
+                    class="btnAddToRooms BtnAddSecuriteeRom px-2 rounded bg-[#A8BBA3] cursor-pointer ">+</button>
+                    <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">Security</h2>
+                </div>
+                <div class="DivworkerInRoom DivworkerInRoomBox3 flex justify-around items-center  flex-wrap"
+                style="position: absolute;top: 0%;left: 0%;width: 99%;height: 93%;"></div>
+            </section>
 
-
-                    <!--salle de securite -->
-                    <div class="boxes box3 absolute salleSecurite "
-                        style="top: 1%;left: 77%; width: 23%; height: 35.7%;">
-                        <div class="BtnTitle flex justify-between absolute w-[102%] z-1">
-                            <button
-                                class="btnAddToRooms BtnAddSecuriteeRom px-2 rounded bg-[#A8BBA3] cursor-pointer ">+</button>
-                            <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">Security</h2>
-                        </div>
-                        <div class="DivworkerInRoom DivworkerInRoomBox3 flex justify-around items-center  flex-wrap"
-                            style="position: absolute;top: 0%;left: 0%;width: 99%;height: 93%;"></div>
-                    </div>
-
-                    <!-- salle reseption -->
-                    <div class="boxes box4 absolute  sallsReseption "
-                        style="top: 24.3%;left: 0.7%; width: 37.6%; height: 76%;">
-                        <div class="BtnTitle flex justify-between absolute top-[13%] left-[1%] w-[102%] z-1">
-
-                            <button
-                                class="btnAddToRooms BtnAddreseptionRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
-                            <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">Reception</h2>
-                        </div>
-                        <div class="DivworkerInRoom DivworkerInRoomBox4 flex justify-around items-center  flex-wrap "
-                            style="position: absolute;top: 13%;left: 1%;width: 97%;height: 84%;"></div>
-                    </div>
+            <!-- salle reseption -->
+            <section class="boxes box4 absolute  sallsReseption "
+            style="top: 24.3%;left: 0.7%; width: 37.6%; height: 76%;">
+            <div class="BtnTitle flex justify-between absolute top-[13%] left-[1%] w-[102%] z-1">
+                
+                <button
+                class="btnAddToRooms BtnAddreseptionRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
+                <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">Reception</h2>
+            </div>
+            <div class="DivworkerInRoom DivworkerInRoomBox4 flex justify-around items-center  flex-wrap "
+            style="position: absolute;top: 13%;left: 1%;width: 97%;height: 84%;"></div>
+                    </section>
 
                     <!-- salle des personel -->
-                    <div class="boxes box5 absolute sallePersonel "
-                        style="top: 66%; left: 55%; width: 23%; height: 34%;">
+                    <section class="boxes box5 absolute sallePersonel "
+                    style="top: 66%; left: 55%; width: 23%; height: 34%;">
                         <div class="BtnTitle flex justify-between absolute w-[102%]">
                             <button
-                                class="btnAddToRooms BtnAddPersonelRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
+                            class="btnAddToRooms BtnAddPersonelRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
                             <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">Staff</h2>
                         </div>
                         <div class="DivworkerInRoom DivworkerInRoomBox5 flex justify-around items-center flex-wrap "
-                            style="position: absolute;top: 13%;left: 1%;width: 97%;height: 84%;"></div>
-                    </div>
-
+                        style="position: absolute;top: 13%;left: 1%;width: 97%;height: 84%;"></div>
+                    </section>
+                    
                     <!-- salle d'archives  -->
-
-                    <div class="boxes box6 absolute  salleArchives "
-                        style="top: 61%; left: 77.5%; width: 23%; height: 39%;" data-zone="Autre">
-                        <div class="BtnTitle flex justify-between absolute top-[13%] left-[1%] w-[102%] z-1">
-                            <button
-                                class="btnAddToRooms BtnAddArchiveRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
-                            <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">Archives </h2>
-                        </div>
-                        <div class="DivworkerInRoom DivworkerInRoomBox6 flex justify-around items-center  flex-wrap"
-                            style="position: absolute;top: 13%;left: 0%;width: 97%;height: 84%;"></div>
+                    
+                    <section class="boxes box6 absolute  salleArchives "
+                    style="top: 61%; left: 77.5%; width: 23%; height: 39%;" data-zone="Autre">
+                    <div class="BtnTitle flex justify-between absolute top-[13%] left-[1%] w-[102%] z-1">
+                        <button
+                        class="btnAddToRooms BtnAddArchiveRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
+                        <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">Archives </h2>
                     </div>
+                    <div class="DivworkerInRoom DivworkerInRoomBox6 flex justify-around items-center  flex-wrap"
+                    style="position: absolute;top: 13%;left: 0%;width: 97%;height: 84%;"></div>
+                </section>
 
                 </div>
             </div>
-
+            
         </section>
     </main>
     <div class="formAddContainer z-1">
-        <form action=""
-            class="formAdd  w-[30rem] h-[90%]   bg-[#a2a4a3b8] flex flex-col text-white  gap-y-3 relative rounded-[5px] overflow-y-auto">
+        <form  class="formAdd  w-[30rem] h-[90%]   bg-[#a2a4a3b8] flex flex-col text-white  gap-y-3 relative rounded-[5px] overflow-y-auto">
             <img src="images/remove-svgrepo-com.svg"
-                class="closeModal absolute w-[33px] left-[27rem] top-[-1px] cursor-pointer" alt="">
+            class="closeModal absolute w-[33px] left-[27rem] top-[-1px] cursor-pointer" alt="">
             <h2 class="text-center text-2xl font-sans">New worker</h2>
             <div
-                class="DivimgView shrink-0  w-36 h-36 bg-gray-200 rounded-[5rem] relative mx-auto border-2   border-dashed  border-gray-500">
-                <img src="" alt="none" class="imgVeiw rounded-[123rem] w-[9rem] h-[8.73rem]" style="display: none;">
-                <div class="textNoImage placeholder absolute top-[40%] left-[25%] text-black">No image</div>
+            class="DivimgView shrink-0  w-36 h-36 bg-gray-200 rounded-[5rem] relative mx-auto border-2   border-dashed  border-gray-500">
+            <img src="" alt="none" class="imgVeiw rounded-[123rem] w-[9rem] h-[8.73rem]" style="display: none;">
+            <div class="textNoImage placeholder absolute top-[40%] left-[25%] text-black">No image</div>
             </div>
             <div class="flex justify-evenly w-[100%]">
                 <input type="text"
-                    class="name w-[13rem]  ps-2 h-10 shadow rounded-[5px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)] "
-                    placeholder="youre name">
+                class="name w-[13rem]  ps-2 h-10 shadow rounded-[5px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)] "
+                placeholder="youre name">
                 <input type="email"
-                    class="email w-[13rem]  ps-2 h-10 shadow rounded-[5px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]"
-                    placeholder="maria@gmail.com">
+                class="email w-[13rem]  ps-2 h-10 shadow rounded-[5px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]"
+                placeholder="maria@gmail.com">
             </div>
-
+            
             <div class="flex justify-evenly w-[100%] select">
                 <input type="tel"
-                    class="telephone w-[13rem] flex justify-start  ps-2 h-10 shadow w-[10rem]  rounded-[5px] rounded-bl-[0px] rounded-tl-[0px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]"
-                    placeholder="0699230289">
-
+                class="telephone w-[13rem] flex justify-start  ps-2 h-10 shadow w-[10rem]  rounded-[5px] rounded-bl-[0px] rounded-tl-[0px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]"
+                placeholder="0699230289">
+                
                 <select
                     class="role w-[13rem]  ps-2 h-10  rounded-[5px] bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]">
                     <option value="">choisir un role</option>
@@ -148,21 +146,21 @@
 
             <div class="flex justify-center">
                 <input type="url"
-                    class="urlImag w-1/2  ps-2 h-10  rounded-[5px]  bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]"
-                    placeholder="https://example.com/image.jpg">
+                class="urlImag w-1/2  ps-2 h-10  rounded-[5px]  bg-[#4e474729] shadow-[0_0_60px_10px_rgba(255,255,255,0.25)]"
+                placeholder="https://example.com/image.jpg">
             </div>
             <div class="flex justify-evenly items-center">
                 <h1 class="font-semibold">avez-vous des experiences ?</h1>
                 <button type="button"
-                    class="bg-[#505050] p-1 rounded-[5px] text-white cursor-pointer AddExperienceBtn">Add
-                    Experience</button>
+                class="bg-[#505050] p-1 rounded-[5px] text-white cursor-pointer AddExperienceBtn">Add
+                Experience</button>
             </div>
             <div class="experience">
 
             </div>
             <button type="submit"
-                class="btnSubmit bg-[#505050] p-1 rounded-[5px] text-white cursor-pointer w-57 flex justify-center items-center mx-auto my-2 ">Send</button>
-
+            class="btnSubmit bg-[#505050] p-1 rounded-[5px] text-white cursor-pointer w-57 flex justify-center items-center mx-auto my-2 ">Send</button>
+            
         </form>
     </div>
     <!-- le modal detail worker -->
@@ -173,12 +171,13 @@
     <!-- le modal available worker -->
     <section class="availableworkersbg flex-col z-1">
         <section
-            class="availableworkersList  w-80 max-h-103 flex flex-col justify-center items-center bg-[#bbbbbbba] py-5 pt-47 gap-3 relative rounded-[5px] overflow-y-auto">
-            <!-- available qorker -->
-        </section>
+        class="availableworkersList  w-80 max-h-103 flex flex-col justify-center items-center bg-[#bbbbbbba] py-5 pt-47 gap-3 relative rounded-[5px] overflow-y-auto">
+        <!-- available qorker -->
+    </section>
     </section>
 
-
+    
 </body>
 
+<script src="./js/workerManager.js"></script>
 </html>

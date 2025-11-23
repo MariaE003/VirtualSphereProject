@@ -33,9 +33,21 @@ let AllInputs = Array.from(document.querySelectorAll('input,textarea,select'));
 let availableworkersbg = document.querySelector('.availableworkersbg')
 let availableworkersList = document.querySelector('.availableworkersList')
 
+//tous les button +
+let btnAddToRooms = document.querySelectorAll(".btnAddToRooms");
+
+//la section principle et sidebar pour la redirections des worker
+let divMain = document.querySelector('.divMain');
+let sidebarWorkers = document.querySelector(".listWorkers");
+
 let idExperience = 0;
 
-//tableau des worker
+//lelement parent du modal du detail
+let modalDetailWorkerBg = document.querySelector('.modalDetailWorkerBg');
+
+
+
+//tableau principale des worker
 let worker = JSON.parse(localStorage.getItem('worker')) || [];
 
 
@@ -60,7 +72,7 @@ AddExperienceBtn.addEventListener('click', () => {
     AddExperience();
 
     inputsExperience = Array.from(document.querySelectorAll('.experienceDiv input, .experienceDiv textarea'));
-
+    
 })
 
 //la validation du formulaire
@@ -68,7 +80,7 @@ formAdd.addEventListener('submit', (e) => {
     e.preventDefault();
     validerForm(inputsExperience);
     // formAdd.reset();
-
+    
 })
 
 //supprimer une experience
@@ -77,10 +89,10 @@ formAdd.addEventListener('click', (e) => {
         let parent = e.target.closest('.experienceDiv');
         if (parent) {
             parent.remove();
-
+            
         }
     }
-
+    
 })
 
 //voir l'image de utilisateur
@@ -90,10 +102,8 @@ urlImag.addEventListener('input', () => {
     textNoImage.innerText = '';
 });
 
-//l'evenement sur les button +
-// console.log(divMain);
 
-let btnAddToRooms = document.querySelectorAll(".btnAddToRooms");
+//l'evenement sur les button +
 btnAddToRooms.forEach(btn => {
     btn.addEventListener('click', () => {
         let usWorker = worker.filter(ele => ele.statusWorker === 'unsigned');
@@ -113,6 +123,59 @@ btnAddToRooms.forEach(btn => {
         }
     })
 });
+
+
+//detail sidebar et suuprimer
+sidebarWorkers.addEventListener('click', (e) => {
+    let div = e.target.closest('.worker');
+    if (!div) return;
+
+    //pour la supp
+    if (e.target.classList.contains('btnDeleteWorker')) {
+        e.stopPropagation();//stope appliquer leveneement sur le parent en applique event juste sur le child
+        // let idToRedirige = div.getAttribute('data-id');
+        // deleteWorker()
+        // console.log("test");
+        return
+    }
+
+
+    let workerId = div.getAttribute('data-id');
+    // console.log(workerId);
+    affichierDetails(workerId);
+
+})
+
+//event de detail et rederige
+divMain.addEventListener('click', (e) => {
+    //le div pour affcicher le details
+
+    let div = e.target.closest('.workerinBox');
+    if (!div) return;
+
+    //le click sur le button de redirige
+    if (e.target.classList.contains('redirigerWorkerBtn')) {
+        e.stopPropagation();//stope appliquer leveneement sur le parent en applique event juste sur le child
+
+        let idToRedirige = div.getAttribute('data-id');
+
+
+        worker = worker.map(ele => {
+            if (Number(ele.id) === Number(idToRedirige)) {
+                ele.statusWorker = 'unsigned';
+            }
+            return ele;
+        })
+        localStorage.setItem('worker', JSON.stringify(worker));
+
+        redirigeToUnsigned(div, worker);
+        return
+    }
+    let workerId = div.getAttribute('data-id');
+    // console.log(workerId);
+    affichierDetails(workerId);
+
+})
 
 
 function filterSelonRole(usworker, salle, numberBox) {
@@ -337,7 +400,7 @@ function affichierWorkerInBox(numbox, worker) {
         <h1>${name}</h1>
                     <h3>${roleAb}</h3>
                 </div>
-                <img src="images/delete-1-svgrepo-com (1).svg" class="redirigerWorkerBtn w-4 rounded-4xl h-4 cursor-pointer" alt="">
+                <img src="images/delete-1-svgrepo-com (1).svg" class="redirigerWorkerBtn w-4 rounded-4xl h-4 cursor-pointer" alt="none">
                 
                 </div>
         `
@@ -346,67 +409,8 @@ function affichierWorkerInBox(numbox, worker) {
     }
     colorBoxVide()
 }
-//event de rediriger un worker vers sidebar / 'unsigned' 
-let divMain = document.querySelector('.divMain');
-let sidebarWorkers = document.querySelector(".listWorkers");
+//event de rediriger un worker vers sidebar / 'unsigned'
 
-//detail sidebar
-sidebarWorkers.addEventListener('click', (e) => {
-    let div = e.target.closest('.worker');
-    if (!div) return;
-
-    //pour la supp
-    if (e.target.classList.contains('btnDeleteWorker')) {
-        e.stopPropagation();//stope appliquer leveneement sur le parent en applique event juste sur le child
-        // let idToRedirige = div.getAttribute('data-id');
-        // deleteWorker()
-        // console.log("test");
-        return
-    }
-
-
-
-
-    let workerId = div.getAttribute('data-id');
-    // console.log(workerId);
-    affichierDetails(workerId);
-
-})
-
-//event de detail et rederige
-divMain.addEventListener('click', (e) => {
-    //le div pour affcicher le details
-
-    let div = e.target.closest('.workerinBox');
-    if (!div) return;
-
-    //le click sur le button de redirige
-    if (e.target.classList.contains('redirigerWorkerBtn')) {
-        e.stopPropagation();//stope appliquer leveneement sur le parent en applique event juste sur le child
-
-        let idToRedirige = div.getAttribute('data-id');
-
-
-        worker = worker.map(ele => {
-            if (Number(ele.id) === Number(idToRedirige)) {
-                ele.statusWorker = 'unsigned';
-            }
-            return ele;
-        })
-        localStorage.setItem('worker', JSON.stringify(worker));
-
-        redirigeToUnsigned(div, worker);
-        return
-    }
-    let workerId = div.getAttribute('data-id');
-    // console.log(workerId);
-    affichierDetails(workerId);
-
-})
-//evenet pour afichier le detail dun worker
-
-
-let modalDetailWorkerBg = document.querySelector('.modalDetailWorkerBg');
 // detail du qorker
 function affichierDetails(workerId) {
     modalDetailWorkerBg.innerHTML = '';
@@ -675,6 +679,7 @@ function AddWorker() {
     AfficherWorker(worker);
 
 }
+
 function getIdWorker() {
     if (worker.length === 0) {
         return 1;
@@ -723,7 +728,7 @@ function AfficherWorker(worker) {
                         <h1>${ele.name.slice(0, 4)}</h1>
                         <h3>${roleAb}</h3>
                     </div>
-                    <img src="images/delete-1-svgrepo-com (1).svg" class="btnDeleteWorker w-6 rounded-4xl h-6 cursor-pointer" alt="">
+                    <img src="images/delete-1-svgrepo-com (1).svg" class="btnDeleteWorker w-6 rounded-4xl h-6 cursor-pointer" alt="none">
             `
             listWorkersUnsigned.appendChild(divWorkerUnsigned);
         }

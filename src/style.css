@@ -254,7 +254,7 @@
         /* style pour tablette en paysage */
         @media (min-width: 851px) and (max-width: 1200px) and (orientation: landscape) {
             .workernoUnsignedSide {
-                width: 25%;
+                width: 19%;
             }
 
             .listWorkers .worker {
@@ -363,7 +363,7 @@
             }
 
             .titleLogo {
-                width: 15rem;
+                width: 12rem;
             }
 
             .titleLogo h1 {

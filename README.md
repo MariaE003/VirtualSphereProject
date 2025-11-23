@@ -31,4 +31,5 @@ VirtualSphereProject/
 ├─ fonts/           # Images et icônes
 └─ README.md         # Documentation
 
-## Captures d’écran
+
+
