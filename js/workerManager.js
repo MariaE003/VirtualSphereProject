@@ -31,7 +31,7 @@ let AllInputs = Array.from(document.querySelectorAll('input,textarea,select'));
 
 //modal des worker disponible et worker 
 let availableworkersbg = document.querySelector('.availableworkersbg')
-let availableworkersList= document.querySelector('.availableworkersList')
+let availableworkersList = document.querySelector('.availableworkersList')
 
 let idExperience = 0;
 
@@ -198,8 +198,8 @@ function filterSelonRole(usworker, salle, numberBox) {
             <div class="workerToAdd flex justify-evenly items-center bg-[#919090] w-[15rem] h-[4rem] rounded-[5px] cursor-pointer"
                 data-id="${ele.id}" data-role="${ele.role}" data-status="${ele.statusWorker}">
                 <img src="${ele.image}"
-                    class="w-13 rounded-4xl h-13" alt="none">
-                <div>
+                    class="imgWorker w-13 rounded-4xl h-13" alt="none">
+                <div class="nameRoleWorler">
                     <h1>${ele.name}</h1>
                     <h3>${ele.role}</h3>
                 </div>
@@ -240,7 +240,7 @@ function filterSelonRole(usworker, salle, numberBox) {
                         let workerToRemoveFromSideBar = document.querySelector(`.listWorkers .worker[data-id="${ele.id}"]`);
                         if (workerToRemoveFromSideBar) {
                             workerToRemoveFromSideBar.remove();
-                        } 
+                        }
 
                         // wor.statusWorker="conference Rom";//attribute
                         let usworker1 = usworker.find(w => w.id === ele.id);
@@ -265,11 +265,11 @@ function filterSelonRole(usworker, salle, numberBox) {
         let imgremove = document.createElement('img')
         imgremove.src = 'images/remove-svgrepo-com.svg';
         imgremove.classList.add('closeModal')
-        imgremove.style.cssText='position: absolute;top: 0.6rem;width: 2rem;left: 17rem;cursor:pointer; close'
+        imgremove.style.cssText = 'position: absolute;top: 0.6rem;width: 2rem;left: 17rem;cursor:pointer; close'
         let h1 = document.createElement('h4');
         h1.setAttribute('class', 'text-xl Inter')
         h1.innerHTML = 'No workers';
-        availableworkersList.append(imgremove,h1);
+        availableworkersList.append(imgremove, h1);
         // availableworkersList.appendChild(h1);
     }
     // Afficher le modal si le nbr des worker inferieur de 5
@@ -332,8 +332,8 @@ function affichierWorkerInBox(numbox, worker) {
         div.innerHTML = `
         <div class="workerinBox flex justify-evenly items-center bg-[#919090] w-[5rem] h-[34px] text-[10px] rounded-[5px] cursor-pointer"
         data-id="${worker.id}" data-role="${worker.role}" data-status="${worker.statusWorker}">
-        <img src="${worker.image}" class="w-6 rounded-4xl h-6" alt="none">
-        <div>
+        <img  src="${worker.image}" class="wImgorkerinBox w-6 rounded-4xl h-6" alt="none">
+        <div class="infoWorkerInBoxe">
         <h1>${name}</h1>
                     <h3>${roleAb}</h3>
                 </div>
@@ -348,15 +348,15 @@ function affichierWorkerInBox(numbox, worker) {
 }
 //event de rediriger un worker vers sidebar / 'unsigned' 
 let divMain = document.querySelector('.divMain');
-let sidebarWorkers=document.querySelector(".listWorkers");
+let sidebarWorkers = document.querySelector(".listWorkers");
 
 //detail sidebar
-sidebarWorkers.addEventListener('click',(e)=>{
-    let div=e.target.closest('.worker');
-    if(!div)return;
+sidebarWorkers.addEventListener('click', (e) => {
+    let div = e.target.closest('.worker');
+    if (!div) return;
 
     //pour la supp
-     if (e.target.classList.contains('btnDeleteWorker')) {
+    if (e.target.classList.contains('btnDeleteWorker')) {
         e.stopPropagation();//stope appliquer leveneement sur le parent en applique event juste sur le child
         // let idToRedirige = div.getAttribute('data-id');
         // deleteWorker()
@@ -412,12 +412,12 @@ function affichierDetails(workerId) {
     modalDetailWorkerBg.innerHTML = '';
     let workerD = worker.find(w => Number(w.id) === Number(workerId));
     let position;
-    
+
 
     position = workerD.statusWorker === "box1" ? position = "salle de conference" : workerD.statusWorker === "box2" ? position = "salle des serveur " : workerD.statusWorker === "box3" ?
-        position = "salle de securite " : workerD.statusWorker === "box4" ? position = "salle reseption " : workerD.statusWorker === "box5" ? position = "salle des personel" :workerD.statusWorker === "box6" ? position ="salle d'archives " :"unsigned"
-   
-    
+        position = "salle de securite " : workerD.statusWorker === "box4" ? position = "salle reseption " : workerD.statusWorker === "box5" ? position = "salle des personel" : workerD.statusWorker === "box6" ? position = "salle d'archives " : "unsigned"
+
+
 
     let sectionModalDetailWorker = document.createElement('section');
     sectionModalDetailWorker.setAttribute('class', 'modalDetailWorker rounded-[5px] w-99 h-115 fixed top-[31px] right-[33%]  bg-[black/50] flex justify-end items-start  overflow-y-auto'
@@ -446,8 +446,8 @@ function affichierDetails(workerId) {
         <div class="Exp flex flex-col gap-4">
             <h2 class="text-lg font-semibold text-center">Expériences</h2>
 
-            ${ workerD.experience.length>0?
-                workerD.experience.map(exp => `
+            ${workerD.experience.length > 0 ?
+            workerD.experience.map(exp => `
                 <div class="bg-[#c5c5c5a4] rounded-lg p-4 shadow flex flex-col gap-3">
                     <div class="flex justify-between text-gray-800 font-medium">
                         <span>${exp.jobTitle}</span>
@@ -469,7 +469,7 @@ function affichierDetails(workerId) {
                     </div>
                 </div>
                
-            `).join(''): `<h2 class="text-gray-600 text-center">Aucune expérience</h2>`}
+            `).join('') : `<h2 class="text-gray-600 text-center">Aucune expérience</h2>`}
 
         </div>
     </div>
@@ -689,20 +689,39 @@ function addToLocalStorage() {
 
 AfficherWorker(worker);
 function AfficherWorker(worker) {
+    let roleAb;
+
     listWorkersUnsigned.innerHTML = '';
     worker.forEach(ele => {
 
+        if (ele.role === 'Receptionnistes') {
+            roleAb = 'Recp'
+        } if (ele.role === 'Techniciens IT') {
+            roleAb = 'It'
+        } if (ele.role === 'Agents De Securite') {
+            roleAb = 'Ags'
+        } if (ele.role === 'Manager') {
+            roleAb = 'M'
+        } if (ele.role === 'Nettoyage') {
+            roleAb = 'Net'
+        }
+        if (ele.role === 'Autres rôles') {
+            roleAb = 'Ar'
+        }
+
+
+
         if (ele.statusWorker === "unsigned") {
             let divWorkerUnsigned = document.createElement('div');
-            divWorkerUnsigned.classList.add("worker", "flex", "justify-evenly", "items-center", "bg-[#655e5e6f]", "w-[15rem]", "h-[4rem]", "rounded-[5px]","cursor-pointer");
+            divWorkerUnsigned.classList.add("worker", "flex", "justify-evenly", "items-center", "bg-[#655e5e6f]", "w-[15rem]", "h-[4rem]", "rounded-[5px]", "cursor-pointer");
             divWorkerUnsigned.setAttribute('data-id', `${ele.id}`);
             // divWorkerUnsigned.setAttribute('data-role', `${ele.role}`);
             divWorkerUnsigned.innerHTML = `
                     <img src="${ele.image}"
-                        class="w-13 rounded-4xl h-13" alt="none">
+                        class="w-13 rounded-4xl h-13 imgWorkerUnsigned" alt="none">
                     <div>
-                        <h1>${ele.name}</h1>
-                        <h3>${ele.role}</h3>
+                        <h1>${ele.name.slice(0, 4)}</h1>
+                        <h3>${roleAb}</h3>
                     </div>
                     <img src="images/delete-1-svgrepo-com (1).svg" class="btnDeleteWorker w-6 rounded-4xl h-6 cursor-pointer" alt="">
             `

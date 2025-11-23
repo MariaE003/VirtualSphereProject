@@ -8,7 +8,6 @@
     <title>Virtual Sphere</title>
     <script src="./js/workerManager.js" defer></script>
     <style>
-
         .formAddContainer {
             display: none;
             justify-content: center;
@@ -56,6 +55,7 @@
             background-color: rgb(0 0 0 / 18%);
 
         }
+
         .availableworkersList::-webkit-scrollbar {
             width: 8px;
         }
@@ -74,8 +74,9 @@
         .availableworkersList::-webkit-scrollbar-thumb:hover {
             background-color: #777;
         }
-        .modalDetailWorkerBg{
-             display: none;
+
+        .modalDetailWorkerBg {
+            display: none;
             justify-content: center;
             align-items: center;
             position: fixed;
@@ -85,17 +86,21 @@
             height: 100%;
             background-color: rgb(0 0 0 / 18%);
         }
+
         .modalDetailWorker .divdetail::-webkit-scrollbar {
             width: 8px;
         }
+
         .modalDetailWorker .divdetail::-webkit-scrollbar-track {
             background-color: #eee;
             border-radius: 12px;
         }
+
         .modalDetailWorker .divdetail::-webkit-scrollbar-thumb {
             background-color: #777;
             border-radius: 12px;
         }
+
         .modalDetailWorker .divdetail::-webkit-scrollbar-thumb:hover {
             background-color: #777;
         }
@@ -120,18 +125,413 @@
             background-color: #777;
         }
 
-        @media (orientation: landscape) {
-            
+
+        /* responsive du tablet  */
+        /* @media (max-width: 768px) and (orientation: landscape) {
+            .workernoUnsignedSide {
+                width: 25%;
+            }
+
+            .listWorkers .worker {
+                width: 9rem;
+                height: 3rem;
+            }
+
+            .listWorkers .worker img {
+                width: 2rem;
+                height: 1rem;
+            }
+
+            .listWorkers .imgWorkerUnsigned {
+                width: 33px !important;
+                height: 2rem !important;
+            }
+
+            .listWorkers .worker div {
+                font-size: 13px;
+                width: 16px;
+            }
+
+            .main {
+                background-color: aqua;
+            }
+
+            .availableworkersbg .availableworkersList {
+                width: 21rem;
+                height: 65%;
+            }
+
+            .modalDetailWorker {
+                left: 14rem;
+                width: 19rem;
+                height: 22rem;
+            }
+
+            .Mainplan div {
+                height: 72%;
+            }
+
+            .Mainplan div img {}
+
+            .boxes .BtnTitle {
+                width: 9rem;
+                height: 2rem;
+
+            }
+
+            .box4 .BtnTitle {
+                top: 4rem;
+
+            }
+
+            .box5 .BtnTitle {
+                top: 4.5rem;
+
+            }
+
+            .box6 .BtnTitle {
+                top: 5.5rem;
+
+            }
+
+            .DivworkerInRoomBox1 {
+                top: 24px !important;
+            }
+
+            .boxes div {
+                width: 5rem;
+                height: 29px;
+            }
+
+            .DivworkerInRoomBox2 {
+                top: 1rem !important;
+                height: 8rem !important;
+            }
+
+            .DivworkerInRoomBox3 {
+                top: 0.3rem !important;
+                height: 8rem !important;
+            }
+
+            .DivworkerInRoomBox4 {
+                top: 4rem !important;
+                height: 16rem !important;
+            }
+
+            .DivworkerInRoomBox5 {
+                        top: 4rem !important;
+        height: 16rem !important;
+            }
+
+            .DivworkerInRoomBox6 {
+                top: 6rem !important;
+                height: 8rem !important;
+            }
+
+            .titleLogo {
+                width: 9rem;
+            }
+
+            .titleLogo h1 {
+                font-size: 14px;
+            }
+
+            .titleLogo img {
+                width: 2rem;
+            }
+
+            formulaire add
+            .formAdd {
+                padding: 5px 0px;
+                width: 28rem;
+                height: 23rem;
+            }
+
+            .formAdd>img {
+                left: 25rem;
+                top: 7px;
+            }
+        } */
+
+        /* responsive du mobile   */
+        /* @media (max-height: 700px) and (orientation: landscape) { */
+        @media (max-width: 850px) and (orientation: landscape) {
+            .workernoUnsignedSide {
+                width: 25%;
+            }
+
+            .listWorkers .worker {
+                width: 9rem;
+                height: 3rem;
+            }
+
+            .listWorkers .worker img {
+                width: 2rem;
+                height: 1rem;
+            }
+
+            .listWorkers .imgWorkerUnsigned {
+                width: 33px !important;
+                height: 2rem !important;
+            }
+
+            .listWorkers .worker div {
+                font-size: 13px;
+                width: 16px;
+            }
+
+            .main {
+                /* background-color: red; */
+                height: 25rem;
+            }
+
+            .availableworkersbg .availableworkersList {
+                width: 21rem;
+                height: 65%;
+            }
+
+            .modalDetailWorker {
+                left: 14rem;
+                width: 19rem;
+                height: 22rem;
+            }
+
+            .Mainplan {
+                /* height: auto;
+                overflow-y:visible; */
+            }
+
+            .Mainplan div {
+                height: 100%;
+            }
+
+            .Mainplan div img {
+                height: 98%;
+            }
+
+
+            .boxes .BtnTitle {
+                width: 9rem;
+                height: 2rem;
+
+            }
+
+            .box4 .BtnTitle {
+                top: 2rem;
+
+            }
+
+            .box5 .BtnTitle {
+                top: -0.5rem;
+
+            }
+
+            .box6 .BtnTitle {
+                top: 0.79rem;
+
+            }
+
+            .DivworkerInRoomBox1 {
+                top: 24px !important;
+            }
+
+            .boxes div {
+                width: 5rem;
+                height: 29px;
+            }
+
+            .DivworkerInRoomBox2 {
+                top: 1rem !important;
+                height: 8rem !important;
+            }
+
+            .DivworkerInRoomBox3 {
+                top: 0.3rem !important;
+                height: 8rem !important;
+            }
+
+            .DivworkerInRoomBox4 {
+                top: 2rem !important;
+                height: 16rem !important;
+            }
+
+            /* .DivworkerInRoomBox5 {
+                        top: 4rem !important;
+        height: 16rem !important;
+            } */
+
+            .DivworkerInRoomBox6 {
+                top: 1rem !important;
+                height: 8rem !important;
+            }
+
+            .titleLogo {
+                width: 9rem;
+            }
+
+            .titleLogo h1 {
+                font-size: 14px;
+            }
+
+            .titleLogo img {
+                width: 2rem;
+            }
+
+            formulaire add .formAdd {
+                padding: 5px 0px;
+                width: 27rem;
+                height: 22rem;
+            }
+
+            .formAdd>img {
+                left: 24rem;
+                top: 7px;
+            }
+        }
+
+        /* style pour tablette en paysage */
+        @media (min-width: 851px) and (max-width: 1200px) and (orientation: landscape) {
+            .workernoUnsignedSide {
+                width: 25%;
+            }
+
+            .listWorkers .worker {
+                width: 9rem;
+                height: 3rem;
+            }
+
+            .listWorkers .worker img {
+                width: 2rem;
+                height: 1rem;
+            }
+
+            .listWorkers .imgWorkerUnsigned {
+                width: 33px !important;
+                height: 2rem !important;
+            }
+
+            .listWorkers .worker div {
+                font-size: 13px;
+                width: 16px;
+            }
+
+            .main {
+                /* background-color: red; */
+                height: 49rem;
+            }
+
+            .availableworkersbg .availableworkersList {
+                width: 21rem;
+                height: 65%;
+            }
+
+            .modalDetailWorker {
+                left: 22rem;
+                width: 26rem;
+                height: 31rem;
+            }
+
+            .Mainplan {
+                /* height: auto;
+                overflow-y:visible; */
+            }
+
+            .Mainplan div {
+                height: 100%;
+            }
+
+            .Mainplan div img {
+                height: 98%;
+            }
+
+
+            .boxes .BtnTitle {
+                width: 9rem;
+                height: 2rem;
+
+            }
+
+            .box4 .BtnTitle {
+                top: 4rem;
+
+            }
+
+            .box5 .BtnTitle {
+                top: -0.8rem;
+
+            }
+
+            .box6 .BtnTitle {
+                top: 1.5rem;
+
+            }
+
+            .DivworkerInRoomBox1 {
+                top: 24px !important;
+            }
+
+            .boxes div {
+                width: 5rem;
+                height: 29px;
+            }
+
+            .DivworkerInRoomBox2 {
+                top: 2rem !important;
+                height: 16rem !important;
+            }
+
+            .DivworkerInRoomBox3 {
+                top: 0.3rem !important;
+                height: 16rem !important;
+            }
+
+            .DivworkerInRoomBox4 {
+                top: 4rem !important;
+                height: 31rem !important;
+            }
+
+            /* .DivworkerInRoomBox5 {
+                        top: 4rem !important;
+        height: 16rem !important;
+            } */
+
+            .DivworkerInRoomBox6 {
+                top: 2rem !important;
+                height: 15.1rem !important;
+            }
+
+            .titleLogo {
+                width: 15rem;
+            }
+
+            .titleLogo h1 {
+                font-size: 18px;
+            }
+
+            .titleLogo img {
+                width: 3rem;
+            }
+
+            formulaire add .formAdd {
+                padding: 5px 0px;
+                width: 27rem;
+                height: 22rem;
+            }
+
+            .formAdd>img {
+                left: 24rem;
+                top: 7px;
+            }
         }
     </style>
 
 </head>
 
 <body class="w-full h-full overflow-hidden">
-    <main class="flex h-full w-full">
+    <main class="main flex h-full w-full ">
         <aside
-            class="workernoUnsignedSide bg-[#A8BBA3] h-137.5  w-72 rounded-b-sm flex flex-col items-center gap-2 overflow-y-auto pb-7">
-            <div class="flex justify-around items-center my-4 w-full">
+            class="workernoUnsignedSide bg-[#A8BBA3] h-auto  w-72 rounded-b-sm flex flex-col items-center gap-2 overflow-y-auto pb-7">
+            <div class="titleLogo flex justify-around items-center my-4 w-full">
                 <img src="images/Group.svg" class="w-12" alt="logo non trouve">
                 <h1 class="mainTitle font-black font-bold text-[22px] lora-font">Virtual Sphere</h1>
             </div>
@@ -143,70 +543,88 @@
 
             </div>
         </aside>
-        <section class="relative flex-1 overflow-hidden ">
+        <section class="Mainplan  h-auto relative flex-1 overflow-hidden ">
             <div class="relative w-full aspect-[16/9] overflow-x-hidden">
-            <img src="/images/plan-worker.jpg" class="w-full h-full  " alt="">
-            <div class="divMain absolute inset-0">
+                <img src="/images/plan-worker.jpg" class="w-full h-full" alt="">
+                <div class="divMain absolute inset-0">
 
-                <!-- salle de conference -->
-                <div class="box1 salleConference absolute  " style="top: 1%; left: 0.5%; width: 38.3%; height: 33%;">
-                    <div class="flex justify-between mb-3">
-                        <button class="btnAddToRooms BtnAddconferenceRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
-                        <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">salle de conference</h2>
+                    <!-- salle de conference -->
+                    <div class="boxes box1 salleConference absolute  "
+                        style="top: 1%; left: 0.5%; width: 38.3%; height: 33%;">
+                        <div class="BtnTitle flex justify-between mb-3">
+                            <button
+                                class="btnAddToRooms BtnAddconferenceRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
+                            <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">Conference</h2>
+                        </div>
+                        <div class="DivworkerInRoom DivworkerInRoomBox1  flex justify-around items-center flex-wrap"
+                            style="position: absolute;top: 14%;left: 1%;width: 97%;height: 84%;"></div>
                     </div>
-                    <div class="DivworkerInRoom  flex justify-around items-center flex-wrap" style="position: absolute;top: 14%;left: 1%;width: 97%;height: 84%;"></div>
-                </div>
 
-                <!--salle des serveur -->
-                <div class="box2 absolute  salleServeur " style="top: -3%; left: 54.2%; width: 22.9%; height: 38%;">
-                    <div class="flex justify-between absolute z-1 top-[10%] w-[102%]">
-                        <button class="btnAddToRooms BtnAddServerRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
-                        <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">salle des serveur</h2>
+                    <!--salle des serveur -->
+                    <div class="boxes box2 absolute  salleServeur "
+                        style="top: -3%; left: 54.2%; width: 22.9%; height: 38%;">
+                        <div class="BtnTitle flex justify-between absolute z-1 top-[10%] w-[102%]">
+                            <button
+                                class="btnAddToRooms BtnAddServerRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
+                            <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">Server
+                            </h2>
+                        </div>
+                        <div class="DivworkerInRoom DivworkerInRoomBox2 flex justify-around items-center  flex-wrap"
+                            style="position: absolute;top: 13%;left: 1%;width: 97%;height: 84%;"></div>
                     </div>
-                    <div class="DivworkerInRoom flex justify-around items-center  flex-wrap" style="position: absolute;top: 13%;left: 1%;width: 97%;height: 84%;"></div>
-                </div>
 
 
-                <!--salle de securite -->
-                <div class="box3 absolute salleSecurite " style="top: 1%;left: 77%; width: 23%; height: 35.7%;">
-                    <div class="flex justify-between absolute w-[102%] z-1">
-                        <button class="btnAddToRooms BtnAddSecuriteeRom px-2 rounded bg-[#A8BBA3] cursor-pointer ">+</button>
-                        <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">salle de securite </h2>
+                    <!--salle de securite -->
+                    <div class="boxes box3 absolute salleSecurite "
+                        style="top: 1%;left: 77%; width: 23%; height: 35.7%;">
+                        <div class="BtnTitle flex justify-between absolute w-[102%] z-1">
+                            <button
+                                class="btnAddToRooms BtnAddSecuriteeRom px-2 rounded bg-[#A8BBA3] cursor-pointer ">+</button>
+                            <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">Security</h2>
+                        </div>
+                        <div class="DivworkerInRoom DivworkerInRoomBox3 flex justify-around items-center  flex-wrap"
+                            style="position: absolute;top: 0%;left: 0%;width: 99%;height: 93%;"></div>
                     </div>
-                    <div class="DivworkerInRoom flex justify-around items-center  flex-wrap" style="position: absolute;top: 0%;left: 0%;width: 99%;height: 93%;"></div>
-                </div>
 
-                <!-- salle reseption -->
-                <div class="box4 absolute  sallsReseption " style="top: 24.3%;left: 0.7%; width: 37.6%; height: 76%;">
-                    <div class="flex justify-between absolute top-[13%] left-[1%] w-[102%] z-1">
-                      
-                        <button class="btnAddToRooms BtnAddreseptionRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
-                        <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">salle de reseption</h2>
+                    <!-- salle reseption -->
+                    <div class="boxes box4 absolute  sallsReseption "
+                        style="top: 24.3%;left: 0.7%; width: 37.6%; height: 76%;">
+                        <div class="BtnTitle flex justify-between absolute top-[13%] left-[1%] w-[102%] z-1">
+
+                            <button
+                                class="btnAddToRooms BtnAddreseptionRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
+                            <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">Reception</h2>
+                        </div>
+                        <div class="DivworkerInRoom DivworkerInRoomBox4 flex justify-around items-center  flex-wrap "
+                            style="position: absolute;top: 13%;left: 1%;width: 97%;height: 84%;"></div>
                     </div>
-                    <div class="DivworkerInRoom flex justify-around items-center  flex-wrap " style="position: absolute;top: 13%;left: 1%;width: 97%;height: 84%;"></div>
-                </div>
 
-                <!-- salle des personel -->
-                <div class="box5 absolute sallePersonel " style="top: 66%; left: 55%; width: 23%; height: 34%;">
-                    <div class="flex justify-between absolute w-[102%]">
-                        <button class="btnAddToRooms BtnAddPersonelRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
-                        <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">salle des personel </h2>
+                    <!-- salle des personel -->
+                    <div class="boxes box5 absolute sallePersonel "
+                        style="top: 66%; left: 55%; width: 23%; height: 34%;">
+                        <div class="BtnTitle flex justify-between absolute w-[102%]">
+                            <button
+                                class="btnAddToRooms BtnAddPersonelRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
+                            <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">Staff</h2>
+                        </div>
+                        <div class="DivworkerInRoom DivworkerInRoomBox5 flex justify-around items-center flex-wrap "
+                            style="position: absolute;top: 13%;left: 1%;width: 97%;height: 84%;"></div>
                     </div>
-                    <div class="DivworkerInRoom flex justify-around items-center flex-wrap " style="position: absolute;top: 13%;left: 1%;width: 97%;height: 84%;"></div>
-                </div>
 
-                <!-- salle d'archives  -->
-                 
-                <div class="box6 absolute  salleArchives " style="top: 61%; left: 77.5%; width: 23%; height: 39%;"
-                    data-zone="Autre">
-                    <div class="flex justify-between absolute top-[13%] left-[1%] w-[102%] z-1">
-                        <button class="btnAddToRooms BtnAddArchiveRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
-                        <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">salle d'archives </h2>
+                    <!-- salle d'archives  -->
+
+                    <div class="boxes box6 absolute  salleArchives "
+                        style="top: 61%; left: 77.5%; width: 23%; height: 39%;" data-zone="Autre">
+                        <div class="BtnTitle flex justify-between absolute top-[13%] left-[1%] w-[102%] z-1">
+                            <button
+                                class="btnAddToRooms BtnAddArchiveRom px-2 rounded bg-[#A8BBA3] cursor-pointer">+</button>
+                            <h2 class="mr-6 mt-[3px] text-center w-[9rem] bg-[#a8bba3] rounded-[13px]">Archives </h2>
+                        </div>
+                        <div class="DivworkerInRoom DivworkerInRoomBox6 flex justify-around items-center  flex-wrap"
+                            style="position: absolute;top: 13%;left: 0%;width: 97%;height: 84%;"></div>
                     </div>
-                    <div class="DivworkerInRoom flex justify-around items-center  flex-wrap" style="position: absolute;top: 13%;left: 0%;width: 97%;height: 84%;"></div>
-                </div>
 
-            </div>
+                </div>
             </div>
 
         </section>
@@ -262,10 +680,10 @@
         </form>
     </div>
     <!-- le modal detail worker -->
-     <section class="modalDetailWorkerBg z-1">
-            <!-- le detail  -->
+    <section class="modalDetailWorkerBg z-1">
+        <!-- le detail  -->
     </section>
-    
+
     <!-- le modal available worker -->
     <section class="availableworkersbg flex-col z-1">
         <section
