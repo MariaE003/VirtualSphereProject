@@ -1,4 +1,4 @@
-let btnAddWorker = document.querySelector('.btnAddWorker');
+let btnAddWorker = document.querySelector('.btnAddWorker');//pour modal
 let closeModals = document.querySelectorAll('.closeModal');
 let formAdd = document.querySelector('.formAdd');
 let formAddContainer = document.querySelector('.formAddContainer');
@@ -11,9 +11,7 @@ let listWorkersUnsigned = document.querySelector('.listWorkers');
 let inputName = document.querySelector('.name');
 let inputEmail = document.querySelector('.email');
 let inputTelephone = document.querySelector('.telephone');
-let inputUrlImag = document.querySelector('.urlImag');
-
-
+let inputUrlImag = document.querySelector('.urlImag')
 //select roles 
 let selectRole = document.querySelector(".role");
 //pour voir images
@@ -31,7 +29,7 @@ let AllInputs = Array.from(document.querySelectorAll('input,textarea,select'));
 
 //modal des worker disponible et worker 
 let availableworkersbg = document.querySelector('.availableworkersbg')
-let availableworkersList = document.querySelector('.availableworkersList')
+let availableworkersList = document.querySelector('.availableworkersList');
 
 //tous les button +
 let btnAddToRooms = document.querySelectorAll(".btnAddToRooms");
@@ -71,8 +69,8 @@ let inputsExperience = [];
 AddExperienceBtn.addEventListener('click', () => {
     AddExperience();
 
-    inputsExperience = Array.from(document.querySelectorAll('.experienceDiv input, .experienceDiv textarea'));
     
+    inputsExperience = Array.from(document.querySelectorAll('.experienceDiv input, .experienceDiv textarea'));
 })
 
 //la validation du formulaire
@@ -386,7 +384,7 @@ function affichierWorkerInBox(numbox, worker) {
     if (worker.statusWorker != 'unsigned') {
         let box = document.querySelector(`.box${numbox} .DivworkerInRoom`);
         // let lengthbox = box.querySelectorAll(`.workerinBox`).length;
-
+        if (!box) return;
         if (box.querySelector(`.workerinBox[data-id="${worker.id}"]`)) return;
         if (!worker) return;
         // console.log(box);
@@ -415,13 +413,7 @@ function affichierWorkerInBox(numbox, worker) {
 function affichierDetails(workerId) {
     modalDetailWorkerBg.innerHTML = '';
     let workerD = worker.find(w => Number(w.id) === Number(workerId));
-    let position;
-
-
-    position = workerD.statusWorker === "box1" ? position = "salle de conference" : workerD.statusWorker === "box2" ? position = "salle des serveur " : workerD.statusWorker === "box3" ?
-        position = "salle de securite " : workerD.statusWorker === "box4" ? position = "salle reseption " : workerD.statusWorker === "box5" ? position = "salle des personel" : workerD.statusWorker === "box6" ? position = "salle d'archives " : "unsigned"
-
-
+    
 
     let sectionModalDetailWorker = document.createElement('section');
     sectionModalDetailWorker.setAttribute('class', 'modalDetailWorker rounded-[5px] w-99 h-115 fixed top-[31px] right-[33%]  bg-[black/50] flex justify-end items-start  overflow-y-auto'
@@ -442,7 +434,7 @@ function affichierDetails(workerId) {
         <section class="mb-6 space-y-2 text-gray-700">
             <p><span class="font-semibold">Email:</span> ${workerD.email}</p>
             <p><span class="font-semibold">Phone:</span> ${workerD.phone}</p>
-            <p><span class="font-semibold">Status:</span> ${position}</p>
+            <p><span class="font-semibold">Status:</span> ${workerD.statusWorker}</p>
         </section>
 
         <hr class="border-gray-300 mb-4">
@@ -501,7 +493,7 @@ function AddExperience() {
     idExperience++;
     let newDiv = document.createElement('div');
     //ajouter un class et style au div
-    newDiv.setAttribute('class', 'relative bg-[#9c9999] flex flex-col gap-y-3 py-7 rounded-[5px] my-3')
+    newDiv.setAttribute('class', 'experienceContent relative bg-[#9c9999] flex flex-col gap-y-3 py-7 rounded-[5px] my-3')
     newDiv.classList.add('experienceDiv');
     newDiv.setAttribute('data-id', idExperience);
     // ajouter les champs d'experience 
@@ -621,6 +613,7 @@ function validerForm(inputsExperience) {
     if (isvalid) {
         AddWorker();
         formAdd.reset();
+        imgVeiw=''
         formAddContainer.style.cssText = "display:none;"
     }
 }
